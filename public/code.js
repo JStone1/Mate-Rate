@@ -7,13 +7,15 @@ postButton.addEventListener("click", newPost);
 
 // handler + event listener for retrieving post button
 let getPosts = document.getElementById("get-posts");
-getPosts.addEventListener("click", getPostData);
+getPosts.addEventListener("click", retrieveData);
 
 // handler + event listener for input field
 let postText = document.getElementById("post-text");
 postText.addEventListener("input", checkText);
 postText.addEventListener("keypress", checkEnter);
 currentText = "";
+
+let recentPosts = document.getElementById("recent-posts"); // handler for ul post list
 
 // checks post text
 function checkText(event) {
@@ -42,10 +44,10 @@ function newPost(user, message) {
   } else {
     let post = {
       postID: postID,
-      username: "user",
+      username: "user1",
       userScore: 4,
       timePosted: Date.now(),
-      postText: "message",
+      postText: currentText,
       postScore: 2,
       postReview: "This is a review",
     };
@@ -71,10 +73,27 @@ function postWords(words) {
   console.log("Posted");
 }
 
-function getPostData() {}
+// creates list item for new post to display on screen
+function getPostData() {
+  recentPosts.innerHTML = "";
+  posts.forEach((post) => {
+    let li = document.createElement("li");
+    let liText = document.createElement("p");
+    liText.textContent = `${post.postText} posted by: ${post.username}`;
+    li.appendChild(liText);
+    recentPosts.appendChild(li);
+  });
+}
+
+function retrieveData() {
+  fetch("/getPosts")
+    .then((response) => response.json())
+    .then((retrievedData) => handleServerData(retrievedData));
+}
 
 // takes new post data from the server and updates posts list
 function handleServerData(data) {
   console.log(data);
   posts = data.posts;
+  getPostData();
 }

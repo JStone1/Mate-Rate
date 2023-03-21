@@ -41,3 +41,9 @@ app.post("/newPost", (request, response) => {
     posts: postList.slice(0, 3),
   });
 });
+
+app.get("/getPosts", (request, response) => {
+  response.json({
+    posts: postList.slice(0, 3),
+  });
+});
