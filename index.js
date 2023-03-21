@@ -12,6 +12,9 @@ let userData = [
   { name: "Anna", age: 24 },
 ];
 
+const postList = [];
+let nextPostID = 0;
+
 app.get("/data", (request, response) => {
   response.json({
     time: Date.now(),
@@ -29,4 +32,12 @@ app.post("/newUser", (request, response) => {
   });
 });
 
-app.post("newPost", (request, response) => {});
+app.post("/newPost", (request, response) => {
+  console.log(request.body);
+  let post = request.body;
+  post.postID = nextPostID++;
+  postList.unshift(post);
+  response.json({
+    posts: postList.slice(0, 3),
+  });
+});

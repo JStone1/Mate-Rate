@@ -9,11 +9,15 @@
   <body>
     <h1>Home page</h1>
     <p>Enter a post below:</p>
-    <form method="post" action="/newPost">
-      <label for="postText">What's on your mind?</label>
-      <input type="text" id="postText" name="post" />
-      <input type="submit" value="Post" />
+    <form>
+      <label for="post-text">What's on your mind?</label>
+      <input type="text" id="post-text" name="post" />
     </form>
+    <button id="post-button">Post</button>
+
+    <h2>Recent Posts:</h2>
+    <button id="get-posts">Click to get recent posts</button>
+    <ul id="recent-posts"></ul>
   </body>
   <script src="code.js"></script>
 </html>
