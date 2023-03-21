@@ -1,0 +1,22 @@
+{
+  "name": "social-media-app",
+  "version": "1.0.0",
+  "description": "My social media concept will allow people to rate eachother’s posts and profiles using a scoring system similar to popular review sites such as TripAdvisor. User’s will be allowed to post text, images and videos onto the social media feed (like many mainstream platforms), however other users will then be able to rate the post on a scale of 1-5 stars, giving that post its own score.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JStone1/Social-Media-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JStone1/Social-Media-App/issues"
+  },
+  "homepage": "https://github.com/JStone1/Social-Media-App#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
