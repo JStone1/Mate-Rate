@@ -1,3 +1,4 @@
+// create express server
 const express = require("express");
 const app = express();
 app.listen(3000, () => console.log("Listening at port 3000"));
@@ -7,31 +8,10 @@ app.use(express.json());
 
 const path = require("path");
 
-let userData = [
-  { name: "John", age: 23 },
-  { name: "Anna", age: 24 },
-];
-
-const postList = [];
+const postList = []; // backend storage of posts
 let nextPostID = 0;
 
-app.get("/data", (request, response) => {
-  response.json({
-    time: Date.now(),
-    data: userData,
-  });
-});
-
-app.post("/newUser", (request, response) => {
-  console.log("Request.body = ", request.body);
-  let newUser = request.body;
-  userData.push(newUser);
-  response.json({
-    status: "successful",
-    numberOfUsers: userData.length,
-  });
-});
-
+// route for adding a new post
 app.post("/newPost", (request, response) => {
   console.log(request.body);
   let post = request.body;
@@ -42,6 +22,7 @@ app.post("/newPost", (request, response) => {
   });
 });
 
+// route for receiving previous posts
 app.get("/getPosts", (request, response) => {
   response.json({
     posts: postList.slice(0, 3),

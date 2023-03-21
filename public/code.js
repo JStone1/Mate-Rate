@@ -1,5 +1,11 @@
 let posts = []; // array to store posts
-let postID = 0;
+let postID = 1;
+
+// handler + event listener for input field
+let postText = document.getElementById("post-text");
+postText.addEventListener("input", checkText);
+postText.addEventListener("keypress", checkEnter);
+let currentText = "";
 
 // handler + event listener for post button
 let postButton = document.getElementById("post-button");
@@ -8,12 +14,6 @@ postButton.addEventListener("click", newPost);
 // handler + event listener for retrieving post button
 let getPosts = document.getElementById("get-posts");
 getPosts.addEventListener("click", retrieveData);
-
-// handler + event listener for input field
-let postText = document.getElementById("post-text");
-postText.addEventListener("input", checkText);
-postText.addEventListener("keypress", checkEnter);
-currentText = "";
 
 let recentPosts = document.getElementById("recent-posts"); // handler for ul post list
 
@@ -38,11 +38,11 @@ function clearInput() {
 }
 
 // function w/ temp data structure and adds a post to the post array
-function newPost(user, message) {
+function newPost() {
   if (currentText.length == 0) {
     console.log("Please enter text to post");
   } else {
-    let post = {
+    let newPost = {
       postID: postID,
       username: "user1",
       userScore: 4,
@@ -51,21 +51,21 @@ function newPost(user, message) {
       postScore: 2,
       postReview: "This is a review",
     };
-    postWords(post);
+    postWords(newPost);
     clearInput();
   }
 }
 
 // function that handles data posting to the backend
-function postWords(words) {
-  console.log(words);
+function postWords(post) {
+  console.log(post);
 
   let options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(words),
+    body: JSON.stringify(post),
   };
   fetch("/newPost", options)
     .then((response) => response.json())
@@ -79,12 +79,13 @@ function getPostData() {
   posts.forEach((post) => {
     let li = document.createElement("li");
     let liText = document.createElement("p");
-    liText.textContent = `${post.postText} posted by: ${post.username}`;
+    liText.textContent = `Post ID: ${post.postID} - ${post.postText} posted by: ${post.username}`;
     li.appendChild(liText);
     recentPosts.appendChild(li);
   });
 }
 
+// fetches post data from the backend
 function retrieveData() {
   fetch("/getPosts")
     .then((response) => response.json())
