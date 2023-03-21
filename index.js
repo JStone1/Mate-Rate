@@ -28,3 +28,5 @@ app.post("/newUser", (request, response) => {
     numberOfUsers: userData.length,
   });
 });
+
+app.post("newPost", (request, response) => {});

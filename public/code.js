@@ -18,3 +18,17 @@ function newUser(name = "User 1", age = 23) {
     .then((response) => response.json())
     .then((serverResponse) => console.log(serverResponse));
 }
+
+let posts = [];
+
+function newPost(user, message) {
+  let post = {
+    username: user,
+    userScore: 4,
+    timePosted: Date.now(),
+    postText: message,
+    postScore: 2,
+    postReview: "This is a review",
+  };
+  posts.unshift(post);
+}
