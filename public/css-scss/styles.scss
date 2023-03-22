@@ -1,0 +1,13 @@
+@import "./_mixins.scss";
+
+body {
+  @include centerContent(column);
+  background-color: lightgray;
+}
+
+form {
+  @include centerContent(column);
+  input {
+    margin: 10px;
+  }
+}

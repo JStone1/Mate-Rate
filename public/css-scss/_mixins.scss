@@ -1,0 +1,24 @@
+@mixin centerContent($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin horizontalList($sideMargin) {
+  @include centerContent(row);
+  list-style: none;
+  li {
+    margin: 0px $sideMargin;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin breakpoint($minwidth, $maxwidth) {
+  @media screen and (min-width: $minwidth) and (max-width: $maxwidth) {
+    @content;
+  }
+}
