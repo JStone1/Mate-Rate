@@ -52,7 +52,7 @@ function newPost() {
   } else {
     let newPost = {
       postID: postID,
-      username: "John",
+      username: "User 1",
       userScore: 4,
       timePosted: date,
       postText: currentText,

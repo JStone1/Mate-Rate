@@ -11,7 +11,8 @@ body {
 
 header {
   @include centerContent(column);
-  background-color: darkgrey;
+  background-color: rgb(63, 63, 63);
+  color: white;
   width: 100%;
 }
 
@@ -24,6 +25,7 @@ form {
 
 .page-nav {
   @include horizontalList(15px);
+  color: white;
 }
 
 #recent-posts {
