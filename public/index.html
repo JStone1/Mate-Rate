@@ -5,9 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="./css-scss/normalize.css" rel="stylesheet" />
     <link href="./css-scss/styles.css" rel="stylesheet" />
   </head>
   <body>
+    <header>
+      <h1>Social Media App</h1>
+      <nav>
+        <ul class="page-nav">
+          <a href="index.html"><li>Home</li></a>
+          <a href="posts.html"><li>Posts</li></a>
+        </ul>
+      </nav>
+    </header>
     <h1>Home page</h1>
     <h2>Enter a post below:</h2>
     <form>
@@ -15,10 +25,6 @@
       <input type="text" id="post-text" name="post" />
     </form>
     <button id="post-button">Post</button>
-
-    <h2>Recent Posts:</h2>
-    <button id="get-posts">Click to get recent posts</button>
-    <ul id="recent-posts"></ul>
   </body>
   <script src="code.js"></script>
 </html>

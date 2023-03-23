@@ -1,8 +1,18 @@
 @import "./_mixins.scss";
 
+ul {
+  padding: 0;
+}
+
 body {
   @include centerContent(column);
-  background-color: lightgray;
+  background-color: whitesmoke;
+}
+
+header {
+  @include centerContent(column);
+  background-color: lightgreen;
+  width: 100%;
 }
 
 form {
@@ -10,4 +20,19 @@ form {
   input {
     margin: 10px;
   }
+}
+
+.page-nav {
+  @include horizontalList(15px);
+}
+
+#recent-posts {
+  min-width: 75vw;
+}
+
+.post {
+  @include centerContent(column);
+  border: 2px solid lightgreen;
+  padding: 15px;
+  margin: 20px 0px;
 }

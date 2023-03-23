@@ -3,17 +3,23 @@ let postID = 1;
 
 // handler + event listener for input field
 let postText = document.getElementById("post-text");
-postText.addEventListener("input", checkText);
-postText.addEventListener("keypress", checkEnter);
+if (postText) {
+  postText.addEventListener("input", checkText);
+  postText.addEventListener("keypress", checkEnter);
+}
 let currentText = "";
 
 // handler + event listener for post button
 let postButton = document.getElementById("post-button");
-postButton.addEventListener("click", newPost);
+if (postButton) {
+  postButton.addEventListener("click", newPost);
+}
 
 // handler + event listener for retrieving post button
 let getPosts = document.getElementById("get-posts");
-getPosts.addEventListener("click", retrieveData);
+if (getPosts) {
+  getPosts.addEventListener("click", retrieveData);
+}
 
 let recentPosts = document.getElementById("recent-posts"); // handler for ul post list
 
@@ -37,6 +43,8 @@ function clearInput() {
   currentText = "";
 }
 
+let date = Date().substring(4, 21);
+
 // function w/ temp data structure and adds a post to the post array
 function newPost() {
   if (currentText.length == 0) {
@@ -44,9 +52,9 @@ function newPost() {
   } else {
     let newPost = {
       postID: postID,
-      username: "user1",
+      username: "John",
       userScore: 4,
-      timePosted: Date.now(),
+      timePosted: date,
       postText: currentText,
       postScore: 2,
       postReview: "This is a review",
@@ -78,9 +86,16 @@ function getPostData() {
   recentPosts.innerHTML = "";
   posts.forEach((post) => {
     let li = document.createElement("li");
+    li.classList.add("post");
+    let liName = document.createElement("h3");
     let liText = document.createElement("p");
-    liText.textContent = `Post ID: ${post.postID} - ${post.postText} posted by: ${post.username}`;
+    let liTime = document.createElement("p");
+    liTime.textContent = `Posted on ${post.timePosted}`;
+    liName.textContent = `${post.username}`;
+    liText.textContent = `${post.postText}`;
+    li.appendChild(liName);
     li.appendChild(liText);
+    li.appendChild(liTime);
     recentPosts.appendChild(li);
   });
 }

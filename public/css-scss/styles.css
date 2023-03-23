@@ -1,9 +1,20 @@
+ul {
+  padding: 0; }
+
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightgray; }
+  background-color: whitesmoke; }
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgreen;
+  width: 100%; }
 
 form {
   display: flex;
@@ -12,5 +23,31 @@ form {
   align-items: center; }
   form input {
     margin: 10px; }
+
+.page-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none; }
+  .page-nav li {
+    margin: 0px 15px;
+    cursor: pointer; }
+    .page-nav li:hover {
+      text-decoration: underline; }
+  .page-nav a:visited {
+    color: black; }
+
+#recent-posts {
+  min-width: 75vw; }
+
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid lightgreen;
+  padding: 15px;
+  margin: 20px 0px; }
 
 /*# sourceMappingURL=styles.css.map */
