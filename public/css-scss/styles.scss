@@ -11,7 +11,7 @@ body {
 
 header {
   @include centerContent(column);
-  background-color: lightgreen;
+  background-color: darkgrey;
   width: 100%;
 }
 
@@ -27,12 +27,45 @@ form {
 }
 
 #recent-posts {
-  min-width: 75vw;
+  min-width: 50vw;
 }
 
 .post {
   @include centerContent(column);
-  border: 2px solid lightgreen;
+  border: 2px solid gray;
   padding: 15px;
   margin: 20px 0px;
+}
+
+.post-text {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.star-container {
+  @include centerContent(row);
+  direction: rtl;
+  span {
+    cursor: pointer;
+    margin: 0px 2px;
+    // &:hover {
+    //   color: orange;
+    // }
+  }
+}
+
+.star1:hover ~ span {
+  color: orange;
+}
+.star2:hover ~ span {
+  color: orange;
+}
+.star3:hover ~ span {
+  color: orange;
+}
+.star4:hover ~ span {
+  color: orange;
+}
+.star5:hover ~ span {
+  color: orange;
 }

@@ -13,7 +13,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightgreen;
+  background-color: darkgrey;
   width: 100%; }
 
 form {
@@ -39,15 +39,44 @@ form {
     color: black; }
 
 #recent-posts {
-  min-width: 75vw; }
+  min-width: 50vw; }
 
 .post {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid lightgreen;
+  border: 2px solid gray;
   padding: 15px;
   margin: 20px 0px; }
+
+.post-text {
+  font-weight: bold;
+  font-size: 1.2rem; }
+
+.star-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  direction: rtl; }
+  .star-container span {
+    cursor: pointer;
+    margin: 0px 2px; }
+
+.star1:hover ~ span {
+  color: orange; }
+
+.star2:hover ~ span {
+  color: orange; }
+
+.star3:hover ~ span {
+  color: orange; }
+
+.star4:hover ~ span {
+  color: orange; }
+
+.star5:hover ~ span {
+  color: orange; }
 
 /*# sourceMappingURL=styles.css.map */

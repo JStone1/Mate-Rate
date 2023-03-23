@@ -89,13 +89,28 @@ function getPostData() {
     li.classList.add("post");
     let liName = document.createElement("h3");
     let liText = document.createElement("p");
+    liText.classList.add("post-text");
     let liTime = document.createElement("p");
+
+    // code to create user stars
+    let starContainer = document.createElement("div");
+    starContainer.classList.add("star-container");
+    for (let i = 0; i < 5; i++) {
+      let star = document.createElement("span");
+      star.classList.add("fa");
+      star.classList.add("fa-star");
+      star.classList.add(`star${i + 1}`);
+      starContainer.appendChild(star);
+    }
+
     liTime.textContent = `Posted on ${post.timePosted}`;
     liName.textContent = `${post.username}`;
     liText.textContent = `${post.postText}`;
+    starContainer.insertAdjacentHTML("beforeend", ":Post rating ");
     li.appendChild(liName);
     li.appendChild(liText);
     li.appendChild(liTime);
+    li.appendChild(starContainer);
     recentPosts.appendChild(li);
   });
 }
