@@ -9,7 +9,7 @@ app.use(express.json());
 const path = require("path");
 
 const postList = []; // backend storage of posts
-let nextPostID = 0;
+let nextPostID = 1;
 
 // route for adding a new post
 app.post("/newPost", (request, response) => {
