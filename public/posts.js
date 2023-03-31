@@ -2,6 +2,7 @@ import { clearInput, checkEnter, checkText, currentText } from "./utils.js";
 
 let posts = []; // array to store posts
 let postID = 1;
+let postScore = 0;
 
 // handler + event listener for input field
 let postText = document.getElementById("post-text");
@@ -37,7 +38,7 @@ export function newPost() {
       userScore: 4,
       timePosted: date,
       postText: currentText,
-      postScore: 2,
+      postScore: postScore,
       postReview: "This is a review",
     };
     postWords(newPost);
@@ -76,11 +77,18 @@ function getPostData() {
     // code to create user stars
     let starContainer = document.createElement("div");
     starContainer.classList.add("star-container");
+    let score = 0;
     for (let i = 0; i < 5; i++) {
       let star = document.createElement("span");
       star.classList.add("fa");
       star.classList.add("fa-star");
       star.classList.add(`star${i + 1}`);
+      star.addEventListener("click", () => {
+        console.log(star);
+        score++;
+        postScore = score;
+        console.log(postScore);
+      });
       starContainer.appendChild(star);
     }
 
