@@ -1,3 +1,5 @@
+import { clearInput, checkEnter, checkText, currentText } from "./utils.js";
+
 let posts = []; // array to store posts
 let postID = 1;
 
@@ -7,7 +9,6 @@ if (postText) {
   postText.addEventListener("input", checkText);
   postText.addEventListener("keypress", checkEnter);
 }
-let currentText = "";
 
 // handler + event listener for post button
 let postButton = document.getElementById("post-button");
@@ -23,30 +24,10 @@ if (getPosts) {
 
 let recentPosts = document.getElementById("recent-posts"); // handler for ul post list
 
-// checks post text
-function checkText(event) {
-  currentText = event.target.value;
-  console.log(currentText);
-}
-
-// checks if enter is pressed on input
-function checkEnter(event) {
-  if (event.key === "Enter" || event.which === 13) {
-    newPost();
-    event.preventDefault();
-  }
-}
-
-// clears input field
-function clearInput() {
-  postText.value = "";
-  currentText = "";
-}
-
 let date = Date().substring(4, 21);
 
 // function w/ temp data structure and adds a post to the post array
-function newPost() {
+export function newPost() {
   if (currentText.length == 0) {
     console.log("Please enter text to post");
   } else {
@@ -83,7 +64,7 @@ function postWords(post) {
 
 // creates list item for new post to display on screen
 function getPostData() {
-  recentPosts.innerHTML = "";
+  // recentPosts.innerHTML = "";
   posts.forEach((post) => {
     let li = document.createElement("li");
     li.classList.add("post");
