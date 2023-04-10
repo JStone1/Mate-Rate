@@ -11,20 +11,26 @@ const path = require("path");
 const postList = []; // backend storage of posts
 let nextPostID = 0;
 
+require("dotenv").config();
+const mongoPassword = process.env.MYMONGOPASSWORD;
+
+const postData = require("./models/Post.js");
+
+const mongoose = require("mongoose");
+
+mongoose.connect(
+  `mongodb+srv://JStone1:${mongoPassword}@cluster0.jxho5pt.mongodb.net/MyApp`
+);
+
 // route for adding a new post
 app.post("/newPost", (request, response) => {
-  console.log(request.body);
-  let post = request.body;
-  post.postID = nextPostID++;
-  postList.unshift(post);
-  response.json({
-    posts: postList.slice(0, 3),
-  });
+  console.log("Data sent from model:", request.body);
+  postData.addNewPost("John", request.body);
 });
 
 // route for receiving previous posts
-app.get("/getPosts", (request, response) => {
+app.get("/getPosts", async (request, response) => {
   response.json({
-    posts: postList.slice(0, 3),
+    posts: await postData.getPosts(15),
   });
 });
