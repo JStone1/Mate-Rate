@@ -64,13 +64,23 @@ app.post("/logout", (request, response) => {
   users.setLoggedIn(request.session.username, false);
   request.session.destroy();
   console.log("Logged out");
-  response.redirect("./register.html");
+  response.redirect("./login.html");
 });
 
 // controller for user registration
 app.post("/register", (request, response) => {
-  console.log(users.getUsers());
-  console.log("Register Successful");
+  console.log(request.body);
+  let userData = request.body;
+  if (users.findUser(userData.username)) {
+    response.json({
+      status: "failed",
+      error: "User already exists",
+    });
+  } else {
+    users.newUser(userData.username, userData.password);
+    console.log("New user added");
+    response.redirect("/login.html");
+  }
 });
 
 //test that user is logged in with a valid session
@@ -81,7 +91,7 @@ function checkLoggedIn(request, response, nextAction) {
       nextAction();
     } else {
       request.session.destroy();
-      return response.redirect("/register.html");
+      return response.redirect("/login.html");
     }
   }
 }
