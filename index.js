@@ -16,6 +16,8 @@ const mongoPassword = process.env.MYMONGOPASSWORD;
 
 const postData = require("./models/Post.js");
 
+const users = require("./models/User.js");
+
 const mongoose = require("mongoose");
 
 mongoose.connect(
@@ -33,4 +35,9 @@ app.get("/getPosts", async (request, response) => {
   response.json({
     posts: await postData.getPosts(15),
   });
+});
+
+app.post("/login", (request, response) => {
+  console.log(users.getUsers());
+  console.log("Login Successful");
 });

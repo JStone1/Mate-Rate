@@ -21,14 +21,15 @@
       </nav>
     </header>
     <h1>Login</h1>
-    <form>
+    <form action="/login" method="POST">
       <label for="login-username">Username</label>
       <input type="text" id="login-username" name="username" />
       <label for="login-password">Password</label>
       <input type="text" id="login-password" name="password" />
+      <input type="submit" value="Login" />
     </form>
-    <button id="login-button">Login</button>
   </body>
   <script type="module" src="./scripts/utils.js"></script>
   <script type="module" src="./scripts/posts.js"></script>
+  <script type="module" src="./scripts/users.js"></script>
 </html>
