@@ -31,7 +31,7 @@ function addNewPost(username, post) {
 async function getPosts(n = 3) {
   let data = [];
   await Post.find({})
-    .sort({ time: -1 })
+    .sort({ timePosted: -1 })
     .limit(n)
     .exec()
     .then((mongoData) => {

@@ -3,41 +3,104 @@ const express = require("express");
 const app = express();
 app.listen(3000, () => console.log("Listening at port 3000"));
 
-app.use(express.static("public"));
-app.use(express.json());
+app.use(express.static("public")); // allows express to serve static files - these are stored in the "public" folder
+
+app.use(express.json()); // method in express that recognises the incoming request Object as a JSON Object
+
+app.use(express.urlencoded({ extended: false })); // method in express that recognises the incoming request Object as strings or arrays
 
 const path = require("path");
-
-const postList = []; // backend storage of posts
-let nextPostID = 0;
 
 require("dotenv").config();
 const mongoPassword = process.env.MYMONGOPASSWORD;
 
-const postData = require("./models/Post.js");
+const sessions = require("express-session"); // access to express sessions
 
-const users = require("./models/User.js");
+const oneHour = 1000 * 60 * 60; // variable for an hour
 
-const mongoose = require("mongoose");
+app.use(
+  sessions({
+    secret: "My secret key",
+    saveUninitialized: true,
+    cookie: { maxAge: oneHour },
+    resave: false,
+  })
+);
+
+// access to cookie parser
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+const postData = require("./models/Post.js"); // access to post model
+
+const users = require("./models/User.js"); // access to user model
+
+const mongoose = require("mongoose"); // access to mongoose
 
 mongoose.connect(
+  // connect to MongoDB instance
   `mongodb+srv://JStone1:${mongoPassword}@cluster0.jxho5pt.mongodb.net/MyApp`
 );
 
-// route for adding a new post
+// controller for user login
+app.post("/login", (request, response) => {
+  let userData = request.body;
+  // checks if user exists, then checks if password matches
+  if (users.findUser(userData.username)) {
+    if (users.checkPassword(userData.username, userData.password)) {
+      request.session.username = userData.username;
+      users.setLoggedIn(userData.username, true);
+      response.redirect("./app.html"); // directs to app page if login is successful
+    } else {
+      console.log("Passwords do not match");
+    }
+  } else {
+    console.log("User not found");
+  }
+});
+
+// controller for logging out
+app.post("/logout", (request, response) => {
+  users.setLoggedIn(request.session.username, false);
+  request.session.destroy();
+  console.log("Logged out");
+  response.redirect("./register.html");
+});
+
+// controller for user registration
+app.post("/register", (request, response) => {
+  console.log(users.getUsers());
+  console.log("Register Successful");
+});
+
+//test that user is logged in with a valid session
+function checkLoggedIn(request, response, nextAction) {
+  if (request.session) {
+    // checks if session exists
+    if (request.session.username) {
+      nextAction();
+    } else {
+      request.session.destroy();
+      return response.redirect("/register.html");
+    }
+  }
+}
+
+//controller for the main app view, depends on user logged in state
+app.get("/app", checkLoggedIn, (request, response) => {
+  // uses checkLoggedIn function as validation before redirecting user to app
+  response.redirect("./app.html");
+});
+
+// controller for adding a new post
 app.post("/newPost", (request, response) => {
   console.log("Data sent from model:", request.body);
   postData.addNewPost("John", request.body);
 });
 
-// route for receiving previous posts
+// controller for receiving previous posts
 app.get("/getPosts", async (request, response) => {
   response.json({
-    posts: await postData.getPosts(15),
+    posts: await postData.getPosts(),
   });
-});
-
-app.post("/login", (request, response) => {
-  console.log(users.getUsers());
-  console.log("Login Successful");
 });

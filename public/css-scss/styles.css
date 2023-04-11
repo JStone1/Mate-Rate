@@ -40,6 +40,9 @@ form {
   .page-nav a:visited {
     color: inherit; }
 
+#logout-button {
+  color: black; }
+
 #recent-posts {
   min-width: 50vw; }
 
