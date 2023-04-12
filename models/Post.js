@@ -14,7 +14,7 @@ const postSchema = new Schema({
   tags: [String],
 });
 
-const Post = model("NewPost", postSchema);
+const Post = model("Post", postSchema);
 
 function addNewPost(username, post) {
   let newPost = {

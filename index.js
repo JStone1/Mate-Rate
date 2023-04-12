@@ -35,8 +35,6 @@ const postData = require("./models/Post.js"); // access to post model
 
 const users = require("./models/User.js"); // access to user model
 
-const users2 = require("./models/User2.js"); // access to mongo user model
-
 const mongoose = require("mongoose"); // access to mongoose
 
 mongoose.connect(
@@ -49,10 +47,10 @@ app.post("/login", async (request, response) => {
   let userData = request.body;
   console.log("userData: ", userData.username, userData.password);
   // checks if user exists, then checks if password matches
-  if (users2.findUser(userData.username)) {
-    if (await users2.checkPassword(userData.username, userData.password)) {
+  if (users.findUser(userData.username)) {
+    if (await users.checkPassword(userData.username, userData.password)) {
       request.session.username = userData.username;
-      users2.setLoggedIn(userData.username, true);
+      users.setLoggedIn(userData.username, true);
       response.redirect("./app.html"); // directs to app page if login is successful
     } else {
       response.redirect("./login.html");
@@ -64,24 +62,23 @@ app.post("/login", async (request, response) => {
 
 // controller for logging out
 app.post("/logout", (request, response) => {
-  users2.setLoggedIn(request.session.username, false);
+  users.setLoggedIn(request.session.username, false);
   request.session.destroy();
   console.log("Logged out");
   response.redirect("./login.html");
 });
 
 // controller for user registration
-app.post("/register", (request, response) => {
+app.post("/register", async (request, response) => {
   console.log(request.body);
   let userData = request.body;
-  if (users2.findUser(userData.username)) {
+  if (await users.findUser(userData.username)) {
     response.json({
       status: "failed",
       error: "User already exists",
     });
   } else {
-    users2.newUser(userData.username, userData.password);
-    users2.addNewUser(userData.username, userData.password);
+    users.addNewUser(userData.username, userData.password);
     console.log("New user added");
     response.redirect("/login.html");
   }
@@ -106,10 +103,15 @@ app.get("/app", checkLoggedIn, (request, response) => {
   response.redirect("./app.html");
 });
 
+//controller for the posts page view, depends on user logged in state
+app.get("/posts", checkLoggedIn, (request, response) => {
+  response.redirect("./posts.html");
+});
+
 // controller for adding a new post
 app.post("/newPost", (request, response) => {
   console.log("Data sent from model:", request.body);
-  postData.addNewPost("John", request.body);
+  postData.addNewPost(request.session.username, request.body);
 });
 
 // controller for receiving previous posts
