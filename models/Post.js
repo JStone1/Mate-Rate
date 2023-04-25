@@ -28,7 +28,7 @@ function addNewPost(username, post) {
   });
 }
 
-async function getPosts(n = 3) {
+async function getPosts(n = 5) {
   let data = [];
   await Post.find({})
     .sort({ timePosted: -1 })

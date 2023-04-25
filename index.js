@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 app.listen(3000, () => console.log("Listening at port 3000"));
 
+app.set("view engine", "ejs");
+
 app.use(express.static("public")); // allows express to serve static files - these are stored in the "public" folder
 
 app.use(express.json()); // method in express that recognises the incoming request Object as a JSON Object
@@ -98,14 +100,17 @@ function checkLoggedIn(request, response, nextAction) {
 }
 
 //controller for the main app view, depends on user logged in state
-app.get("/app", checkLoggedIn, (request, response) => {
+app.get("/app", checkLoggedIn, async (request, response) => {
   // uses checkLoggedIn function as validation before redirecting user to app
   response.sendFile(path.resolve(__dirname, "views/app.html"));
 });
 
 //controller for the posts page view, depends on user logged in state
-app.get("/posts", checkLoggedIn, (request, response) => {
-  response.sendFile(path.resolve(__dirname, "views/posts.html"));
+app.get("/posts", checkLoggedIn, async (request, response) => {
+  // response.sendFile(path.resolve(__dirname, "views/posts.html"));
+  let posts = await postData.getPosts();
+  console.log("Current posts: ", posts);
+  response.render("posts", { data: { posts: posts } });
 });
 
 // controller for adding a new post
