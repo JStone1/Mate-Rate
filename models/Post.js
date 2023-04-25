@@ -17,12 +17,12 @@ const postSchema = new Schema({
 
 const Post = model("Post", postSchema);
 
-let newPostID = 1;
+let newPostNumber = 1;
 let date = Date().substring(4, 21);
 
 function addNewPost(username, post) {
   let newPost = {
-    postNumber: newPostID,
+    postNumber: newPostNumber,
     username: username,
     timePosted: date,
     postText: post.postText,
@@ -31,7 +31,7 @@ function addNewPost(username, post) {
   Post.create(newPost).catch((error) => {
     console.log("Error: ", error);
   });
-  newPostID++;
+  newPostNumber++;
 }
 
 async function getPosts(n = 5) {
