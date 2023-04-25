@@ -51,7 +51,7 @@ app.post("/login", async (request, response) => {
     if (await users.checkPassword(userData.username, userData.password)) {
       request.session.username = userData.username;
       users.setLoggedIn(userData.username, true);
-      response.redirect("./app.html"); // directs to app page if login is successful
+      response.sendFile(path.resolve(__dirname, "views/app.html"));
     } else {
       response.redirect("./login.html");
     }
@@ -100,12 +100,12 @@ function checkLoggedIn(request, response, nextAction) {
 //controller for the main app view, depends on user logged in state
 app.get("/app", checkLoggedIn, (request, response) => {
   // uses checkLoggedIn function as validation before redirecting user to app
-  response.redirect("./app.html");
+  response.sendFile(path.resolve(__dirname, "views/app.html"));
 });
 
 //controller for the posts page view, depends on user logged in state
 app.get("/posts", checkLoggedIn, (request, response) => {
-  response.redirect("./posts.html");
+  response.sendFile(path.resolve(__dirname, "views/posts.html"));
 });
 
 // controller for adding a new post
