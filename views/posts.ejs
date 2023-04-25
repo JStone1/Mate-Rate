@@ -34,8 +34,46 @@
       <% data.posts.forEach(result => {%>
       <li class="post">
         <h2><strong><%=result.username%></strong></h2>
+        <p>Post Number: <%=result.postNumber%></p>
         <p class="post-text"><%=result.postText%></p>
         <p>Time posted: <%=result.timePosted%></p>
+        <div class="rate">
+          <input
+            type="radio"
+            id="star5_<%=result.postNumber%>"
+            name="rate_<%=result.postNumber%>"
+            value="5"
+          />
+          <label for="star5_<%=result.postNumber%>" title="text">5 stars</label>
+          <input
+            type="radio"
+            id="star4_<%=result.postNumber%>"
+            name="rate_<%=result.postNumber%>"
+            value="4"
+          />
+          <label for="star4_<%=result.postNumber%>" title="text">4 stars</label>
+          <input
+            type="radio"
+            id="star3_<%=result.postNumber%>"
+            name="rate_<%=result.postNumber%>"
+            value="3"
+          />
+          <label for="star3_<%=result.postNumber%>" title="text">3 stars</label>
+          <input
+            type="radio"
+            id="star2_<%=result.postNumber%>"
+            name="rate_<%=result.postNumber%>"
+            value="2"
+          />
+          <label for="star2_<%=result.postNumber%>" title="text">2 stars</label>
+          <input
+            type="radio"
+            id="star1_<%=result.postNumber%>"
+            name="rate_<%=result.postNumber%>"
+            value="1"
+          />
+          <label for="star1_<%=result.postNumber%>" title="text">1 star</label>
+        </div>
       </li>
       <% }) %>
     </ul>
