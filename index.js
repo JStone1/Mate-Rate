@@ -44,6 +44,18 @@ mongoose.connect(
   `mongodb+srv://JStone1:${mongoPassword}@cluster0.jxho5pt.mongodb.net/MyApp`
 );
 
+app.get("/", (request, response) => {
+  response.render("pages/login");
+});
+
+app.get("/register", (request, response) => {
+  response.render("pages/register");
+});
+
+app.get("/login", (request, response) => {
+  response.render("pages/login");
+});
+
 // controller for user login
 app.post("/login", async (request, response) => {
   let userData = request.body;
@@ -53,9 +65,9 @@ app.post("/login", async (request, response) => {
     if (await users.checkPassword(userData.username, userData.password)) {
       request.session.username = userData.username;
       users.setLoggedIn(userData.username, true);
-      response.sendFile(path.resolve(__dirname, "views/app.html"));
+      response.render("pages/app");
     } else {
-      response.redirect("./login.html");
+      response.render("pages/login");
     }
   } else {
     console.log("User not found");
@@ -67,7 +79,7 @@ app.post("/logout", (request, response) => {
   users.setLoggedIn(request.session.username, false);
   request.session.destroy();
   console.log("Logged out");
-  response.redirect("./login.html");
+  response.render("pages/login");
 });
 
 // controller for user registration
@@ -82,7 +94,7 @@ app.post("/register", async (request, response) => {
   } else {
     users.addNewUser(userData.username, userData.password);
     console.log("New user added");
-    response.redirect("/login.html");
+    response.render("pages/login");
   }
 });
 
@@ -94,7 +106,7 @@ function checkLoggedIn(request, response, nextAction) {
       nextAction();
     } else {
       request.session.destroy();
-      return response.redirect("/login.html");
+      return response.render("pages/login");
     }
   }
 }
@@ -102,15 +114,14 @@ function checkLoggedIn(request, response, nextAction) {
 //controller for the main app view, depends on user logged in state
 app.get("/app", checkLoggedIn, async (request, response) => {
   // uses checkLoggedIn function as validation before redirecting user to app
-  response.sendFile(path.resolve(__dirname, "views/app.html"));
+  response.render("pages/app");
 });
 
 //controller for the posts page view, depends on user logged in state
 app.get("/posts", checkLoggedIn, async (request, response) => {
-  // response.sendFile(path.resolve(__dirname, "views/posts.html"));
   let posts = await postData.getPosts();
   console.log("Current posts: ", posts);
-  response.render("posts", { data: { posts: posts } });
+  response.render("pages/posts", { data: { posts: posts } });
 });
 
 // controller for adding a new post

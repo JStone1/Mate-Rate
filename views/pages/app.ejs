@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+  </head>
+  <body>
+    <header>
+      <h1>Social Media App</h1>
+      <nav><%- include("../partials/nav") %></nav>
+      <form action="/logout" method="post">
+        <input id="logout-button" type="submit" value="Logout" />
+      </form>
+    </header>
+    <h1>App page</h1>
+    <form>
+      <label for="post-text">What's on your mind?</label>
+      <input type="text" id="post-text" name="post" />
+    </form>
+    <button id="post-button">Post</button>
+  </body>
+  <script type="module" src="./scripts/utils.js"></script>
+  <script type="module" src="./scripts/posts.js"></script>
+</html>
