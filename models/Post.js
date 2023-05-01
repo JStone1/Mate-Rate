@@ -17,10 +17,11 @@ const postSchema = new Schema({
 
 const Post = model("Post", postSchema);
 
-let newPostNumber = 1;
 let date = Date().substring(4, 21);
 
-function addNewPost(username, post) {
+async function addNewPost(username, post) {
+  let newPostNumber = await Post.countDocuments({}); // gets the amount of documents in the Post collection
+  console.log("Number of docs in Posts: ", newPostNumber);
   let newPost = {
     postNumber: newPostNumber,
     username: username,
@@ -31,7 +32,7 @@ function addNewPost(username, post) {
   Post.create(newPost).catch((error) => {
     console.log("Error: ", error);
   });
-  newPostNumber++;
+  // newPostNumber++;
 }
 
 async function getPosts(n = 5) {
