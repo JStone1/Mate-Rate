@@ -145,6 +145,9 @@ app.get("/getPosts", async (request, response) => {
 //   await postData.ratePost(3);
 // });
 
+////////////////////////
+// TEMP SOLUTION - WHEN IT GOES PAST 10 POSTS THE STRING CALCLATIONS WILL NOT WORK
+///////////////////////
 app.post("/updateScore", async (request, response) => {
   // converts js object to string then, access specific position in string, then convert it back to an int
   let score = JSON.stringify(request.body);
@@ -155,3 +158,6 @@ app.post("/updateScore", async (request, response) => {
   post = parseInt(post);
   postData.ratePost(post, score);
 });
+////////////////////////
+//
+////////////////////////
