@@ -121,6 +121,9 @@ app.get("/app", checkLoggedIn, async (request, response) => {
 app.get("/posts", checkLoggedIn, async (request, response) => {
   let posts = await postData.getPosts();
   console.log("Current posts: ", posts);
+  posts.forEach((post) => {
+    post.createdAt.toString();
+  });
   response.render("pages/posts", { data: { posts: posts } });
 });
 

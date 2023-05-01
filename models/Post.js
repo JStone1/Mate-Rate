@@ -1,19 +1,22 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const postSchema = new Schema({
-  postNumber: Number,
-  username: String,
-  profileScore: Number,
-  //   userImage: "?",
-  timePosted: Date,
-  postText: String,
-  //   postImage: "?",
-  postScore: Number,
-  amountPostVoted: Number,
-  postReview: String,
-  tags: [String],
-});
+const postSchema = new Schema(
+  {
+    postNumber: Number,
+    username: String,
+    profileScore: Number,
+    //   userImage: "?",
+    timePosted: Date,
+    postText: String,
+    //   postImage: "?",
+    postScore: Number,
+    amountPostVoted: Number,
+    postReview: String,
+    tags: [String],
+  },
+  { timestamps: true }
+);
 
 const Post = model("Post", postSchema);
 
@@ -25,7 +28,7 @@ async function addNewPost(username, post) {
   let newPost = {
     postNumber: newPostNumber,
     username: username,
-    timePosted: date,
+    timePosted: Date().substring(4, 21),
     postText: post.postText,
     postReview: "hard coded review",
   };
