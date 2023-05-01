@@ -124,6 +124,7 @@ app.get("/posts", checkLoggedIn, async (request, response) => {
   posts.forEach((post) => {
     post.createdAt.toString();
   });
+  postData.getOnePost(1);
   response.render("pages/posts", { data: { posts: posts } });
 });
 
@@ -138,4 +139,19 @@ app.get("/getPosts", async (request, response) => {
   response.json({
     posts: await postData.getPosts(),
   });
+});
+
+// app.get("/updateName", async (request, response) => {
+//   await postData.ratePost(3);
+// });
+
+app.post("/updateScore", async (request, response) => {
+  // converts js object to string then, access specific position in string, then convert it back to an int
+  let score = JSON.stringify(request.body);
+  score = score.charAt(score.length - 3);
+  score = parseInt(score);
+  let post = JSON.stringify(request.body);
+  post = post.charAt(post.length - 7);
+  post = parseInt(post);
+  postData.ratePost(post, score);
 });

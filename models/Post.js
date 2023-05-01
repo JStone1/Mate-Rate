@@ -53,4 +53,26 @@ async function getPosts(n = 5) {
   return data;
 }
 
-module.exports = { addNewPost, getPosts };
+async function getOnePost(postNum) {
+  let post;
+  await Post.find({ postNumber: postNum })
+    .exec()
+    .then((mongoData) => {
+      post = mongoData;
+    })
+    .catch((error) => {
+      console.log("Error:", error);
+    });
+  console.log("Retrieved Post: ", post);
+  return post;
+}
+
+async function ratePost(postNum, rating) {
+  let post = await Post.find({ postNumber: postNum })
+    .updateOne({ postScore: rating })
+    .exec();
+  console.log("Updated post: ", post);
+  return post;
+}
+
+module.exports = { addNewPost, getPosts, getOnePost, ratePost };

@@ -21,46 +21,81 @@
         <p>Post Number: <%=result.postNumber%></p>
         <p class="post-text"><%=result.postText%></p>
         <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
-        <div class="rate">
-          <input
-            type="radio"
-            id="star5_<%=result.postNumber%>"
-            name="rate_<%=result.postNumber%>"
-            value="5"
-          />
-          <label for="star5_<%=result.postNumber%>" title="text">5 stars</label>
-          <input
-            type="radio"
-            id="star4_<%=result.postNumber%>"
-            name="rate_<%=result.postNumber%>"
-            value="4"
-          />
-          <label for="star4_<%=result.postNumber%>" title="text">4 stars</label>
-          <input
-            type="radio"
-            id="star3_<%=result.postNumber%>"
-            name="rate_<%=result.postNumber%>"
-            value="3"
-          />
-          <label for="star3_<%=result.postNumber%>" title="text">3 stars</label>
-          <input
-            type="radio"
-            id="star2_<%=result.postNumber%>"
-            name="rate_<%=result.postNumber%>"
-            value="2"
-          />
-          <label for="star2_<%=result.postNumber%>" title="text">2 stars</label>
-          <input
-            type="radio"
-            id="star1_<%=result.postNumber%>"
-            name="rate_<%=result.postNumber%>"
-            value="1"
-          />
-          <label for="star1_<%=result.postNumber%>" title="text">1 star</label>
-        </div>
+        <form id="rating-submit" method="post" action="/updateScore">
+          <div class="rate">
+            <input
+              type="radio"
+              id="star5_<%=result.postNumber%>"
+              name="rate_<%=result.postNumber%>"
+              value="5"
+              <%if(result.postScore == 5){%>
+                checked="checked"
+                <%}%>
+            />
+            <label for="star5_<%=result.postNumber%>" title="text"
+              >5 stars</label
+            >
+            <input
+              type="radio"
+              id="star4_<%=result.postNumber%>"
+              name="rate_<%=result.postNumber%>"
+              value="4"
+              <%if(result.postScore == 4){%>
+                checked="checked"
+                <%}%>
+            />
+            <label for="star4_<%=result.postNumber%>" title="text"
+              >4 stars</label
+            >
+            <input
+              type="radio"
+              id="star3_<%=result.postNumber%>"
+              name="rate_<%=result.postNumber%>"
+              value="3"
+              <%if(result.postScore == 3){%>
+                checked="checked"
+                <%}%>
+            />
+            <label for="star3_<%=result.postNumber%>" title="text"
+              >3 stars</label
+            >
+            <input
+              type="radio"
+              id="star2_<%=result.postNumber%>"
+              name="rate_<%=result.postNumber%>"
+              value="2"
+              <%if(result.postScore == 2){%>
+                checked="checked"
+                <%}%>
+            />
+            <label for="star2_<%=result.postNumber%>" title="text"
+              >2 stars</label
+            >
+            <input
+              type="radio"
+              id="star1_<%=result.postNumber%>"
+              name="rate_<%=result.postNumber%>"
+              value="1"
+              <%if(result.postScore == 1){%>
+                checked="checked"
+                <%}%>
+            />
+            <label for="star1_<%=result.postNumber%>" title="text"
+              >1 star</label
+            >
+          </div>
+
+          <button onclick="getValue()" type="submit">Submit rating</button>
+        </form>
       </li>
       <% }) %>
     </ul>
   </body>
+  <script> 
+  function getValue() {
+    let checkedValue = document.querySelector('input[name="rate_3"]:checked').value; 
+    console.log(checkedValue)
+  }
+     </script>
   <script type="module" src="./scripts/posts.js"></script>
 </html>
