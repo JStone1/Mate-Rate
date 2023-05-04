@@ -124,7 +124,6 @@ app.get("/posts", checkLoggedIn, async (request, response) => {
   posts.forEach((post) => {
     post.createdAt.toString();
   });
-  postData.getOnePost(1);
   response.render("pages/posts", { data: { posts: posts } });
 });
 
@@ -141,23 +140,14 @@ app.get("/getPosts", async (request, response) => {
   });
 });
 
-// app.get("/updateName", async (request, response) => {
-//   await postData.ratePost(3);
-// });
-
-////////////////////////
-// TEMP SOLUTION - WHEN IT GOES PAST 10 POSTS THE STRING CALCLATIONS WILL NOT WORK
-///////////////////////
 app.post("/updateScore", async (request, response) => {
   // converts js object to string then, access specific position in string, then convert it back to an int
+  console.log("Request.body: ", request.body);
   let score = JSON.stringify(request.body);
   score = score.charAt(score.length - 3);
   score = parseInt(score);
-  let post = JSON.stringify(request.body);
-  post = post.charAt(post.length - 7);
-  post = parseInt(post);
+  console.log("Score: ", score);
+  let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
+  console.log("Post: ", post);
   postData.ratePost(post, score);
 });
-////////////////////////
-//
-////////////////////////
