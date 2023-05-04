@@ -35,7 +35,7 @@ app.use(cookieParser());
 
 const postData = require("./models/Post.js"); // access to post model
 
-const users = require("./models/User.js"); // access to user model
+const userData = require("./models/User.js"); // access to user model
 
 const mongoose = require("mongoose"); // access to mongoose
 
@@ -58,13 +58,13 @@ app.get("/login", (request, response) => {
 
 // controller for user login
 app.post("/login", async (request, response) => {
-  let userData = request.body;
-  console.log("userData: ", userData.username, userData.password);
+  let user = request.body;
+  console.log("userData: ", user.username, user.password);
   // checks if user exists, then checks if password matches
-  if (users.findUser(userData.username)) {
-    if (await users.checkPassword(userData.username, userData.password)) {
-      request.session.username = userData.username;
-      users.setLoggedIn(userData.username, true);
+  if (userData.findUser(user.username)) {
+    if (await userData.checkPassword(user.username, user.password)) {
+      request.session.username = user.username;
+      userData.setLoggedIn(user.username, true);
       response.render("pages/app");
     } else {
       response.render("pages/login");
@@ -76,7 +76,7 @@ app.post("/login", async (request, response) => {
 
 // controller for logging out
 app.post("/logout", (request, response) => {
-  users.setLoggedIn(request.session.username, false);
+  userData.setLoggedIn(request.session.username, false);
   request.session.destroy();
   console.log("Logged out");
   response.render("pages/login");
@@ -86,13 +86,13 @@ app.post("/logout", (request, response) => {
 app.post("/register", async (request, response) => {
   console.log(request.body);
   let userData = request.body;
-  if (await users.findUser(userData.username)) {
+  if (await userData.findUser(userData.username)) {
     response.json({
       status: "failed",
       error: "User already exists",
     });
   } else {
-    users.addNewUser(userData.username, userData.password);
+    userData.addNewUser(userData.username, userData.password);
     console.log("New user added");
     response.render("pages/login");
   }
@@ -153,4 +153,10 @@ app.post("/updateScore", async (request, response) => {
   postData.ratePost(post, score);
   response.status(204); // http code for "No content" - stops page from waiting for response
   response.send(console.log("Score updated"));
+});
+
+app.get("/profile", checkLoggedIn, async (request, response) => {
+  console.log("Current user: ", request.session.username);
+  let user = await userData.findUser(request.session.username);
+  response.render("pages/profile", { data: { user: user } });
 });

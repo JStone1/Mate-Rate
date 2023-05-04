@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+  </head>
+  <body>
+    <header>
+      <h1>Social Media App</h1>
+      <nav><%- include("../partials/nav") %></nav>
+      <form action="/logout" method="post">
+        <input id="logout-button" type="submit" value="Logout" />
+      </form>
+    </header>
+    <h1><%=data.user.username%>'s profile</h1>
+  </body>
+  <script type="module" src="./scripts/utils.js"></script>
+  <script type="module" src="./scripts/posts.js"></script>
+</html>
