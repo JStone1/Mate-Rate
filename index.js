@@ -141,6 +141,7 @@ app.get("/getPosts", async (request, response) => {
 });
 
 app.post("/updateScore", async (request, response) => {
+  let posts = await postData.getPosts();
   // converts js object to string then, access specific position in string, then convert it back to an int
   console.log("Request.body: ", request.body);
   let score = JSON.stringify(request.body);
@@ -150,4 +151,6 @@ app.post("/updateScore", async (request, response) => {
   let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
   console.log("Post: ", post);
   postData.ratePost(post, score);
+  response.status(204); // http code for "No content" - stops page from waiting for response
+  response.send(console.log("Score updated"));
 });
