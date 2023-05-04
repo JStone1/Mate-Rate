@@ -75,4 +75,9 @@ async function ratePost(postNum, rating) {
   return post;
 }
 
-module.exports = { addNewPost, getPosts, getOnePost, ratePost };
+async function findUserPosts(user) {
+  let posts = await Post.find({ username: user }).exec();
+  return posts;
+}
+
+module.exports = { addNewPost, getPosts, getOnePost, ratePost, findUserPosts };

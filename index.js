@@ -158,5 +158,7 @@ app.post("/updateScore", async (request, response) => {
 app.get("/profile", checkLoggedIn, async (request, response) => {
   console.log("Current user: ", request.session.username);
   let user = await userData.findUser(request.session.username);
-  response.render("pages/profile", { data: { user: user } });
+  console.log("HERE:", user);
+  let userPosts = await postData.findUserPosts(user.username);
+  response.render("pages/profile", { data: { user: user, posts: userPosts } });
 });
