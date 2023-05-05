@@ -85,14 +85,14 @@ app.post("/logout", (request, response) => {
 // controller for user registration
 app.post("/register", async (request, response) => {
   console.log(request.body);
-  let userData = request.body;
-  if (await userData.findUser(userData.username)) {
+  let user = request.body;
+  if (await userData.findUser(user.username)) {
     response.json({
       status: "failed",
       error: "User already exists",
     });
   } else {
-    userData.addNewUser(userData.username, userData.password);
+    userData.addNewUser(user.username, user.password);
     console.log("New user added");
     response.render("pages/login");
   }

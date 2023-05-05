@@ -16,7 +16,13 @@ const User = model("User", userSchema);
 
 // creates new user based on data typed in by user
 async function addNewUser(username, password) {
-  const user = { username: username, password: password, loggedin: false };
+  const user = {
+    username: username,
+    password: password,
+    loggedin: false,
+    bio: "Welcome to my profile!",
+    profileScore: 0,
+  };
   await User.create(user).catch((error) => {
     console.log("ERROR: ", error);
   });
@@ -85,6 +91,10 @@ async function checkLoggedIn(username) {
   return false;
 }
 
+async function updateBio(user, bio) {
+  User.find({ username: user }).updateOne({ bio: bio }).exec();
+}
+
 // exports all functions from model
 module.exports = {
   addNewUser,
@@ -93,4 +103,5 @@ module.exports = {
   checkPassword,
   setLoggedIn,
   checkLoggedIn,
+  updateBio,
 };

@@ -120,4 +120,13 @@ form {
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08; }
 
+#profile-posts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem; }
+  #profile-posts li {
+    width: 500px; }
+
 /*# sourceMappingURL=styles.css.map */

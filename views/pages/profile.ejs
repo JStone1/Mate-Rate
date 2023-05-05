@@ -12,7 +12,9 @@
       </form>
     </header>
     <h1><%=data.user.username%>'s profile</h1>
+    <p><strong>Bio: </strong><%=data.user.bio%></p>
     <h2>Recent posts</h2>
+    <ul id="profile-posts">
     <% data.posts.forEach(result => {%>
       <li class="post">
         <h2><strong><%=result.username%></strong></h2>
@@ -21,6 +23,7 @@
         <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
       </li>
       <% }) %>
+    </ul>
   </body>
   <script type="module" src="./scripts/utils.js"></script>
   <script type="module" src="./scripts/posts.js"></script>

@@ -113,3 +113,11 @@ form {
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
+
+#profile-posts {
+  @include centerContent(row);
+  gap: 4rem;
+  li {
+    width: 500px;
+  }
+}
