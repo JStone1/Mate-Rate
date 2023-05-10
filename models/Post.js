@@ -6,10 +6,9 @@ const postSchema = new Schema(
     postNumber: Number,
     username: String,
     profileScore: Number,
-    //   userImage: "?",
+    imagePath: String,
     timePosted: Date,
     postText: String,
-    //   postImage: "?",
     postScore: Number,
     amountPostVoted: Number,
     postReview: String,
@@ -22,14 +21,15 @@ const Post = model("Post", postSchema);
 
 let date = Date().substring(4, 21);
 
-async function addNewPost(username, post) {
+async function addNewPost(username, post, imageFile) {
   let newPostNumber = await Post.countDocuments({}); // gets the amount of documents in the Post collection
   console.log("Number of docs in Posts: ", newPostNumber);
   let newPost = {
     postNumber: newPostNumber,
     username: username,
     timePosted: Date().substring(4, 21),
-    postText: post.postText,
+    imagePath: imageFile,
+    postText: post.post,
     postReview: "hard coded review",
   };
   Post.create(newPost).catch((error) => {
@@ -41,7 +41,7 @@ async function addNewPost(username, post) {
 async function getPosts(n = 5) {
   let data = [];
   await Post.find({})
-    .sort({ timePosted: -1 })
+    .sort({ createdAt: -1 })
     .limit(n)
     .exec()
     .then((mongoData) => {

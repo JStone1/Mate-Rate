@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: false })); // method in express that reco
 
 const path = require("path");
 
+const multer = require("multer");
+
+const upload = multer({ dest: "./public/uploads" });
+
 require("dotenv").config();
 const mongoPassword = process.env.MYMONGOPASSWORD;
 
@@ -127,10 +131,24 @@ app.get("/posts", checkLoggedIn, async (request, response) => {
   response.render("pages/posts", { data: { posts: posts } });
 });
 
+// app.post("/newPost", (request, response) => {
+//   console.log("Data sent from model:", request.body);
+//   postData.addNewPost(request.session.username, request.body);
+// });
+
 // controller for adding a new post
-app.post("/newPost", (request, response) => {
-  console.log("Data sent from model:", request.body);
-  postData.addNewPost(request.session.username, request.body);
+app.post("/newPost", upload.single("myImage"), async (request, response) => {
+  console.log(request.file);
+  let fileName;
+  let posts = await postData.getPosts();
+  if (request.file && request.file.filename) {
+    fileName = "uploads/" + request.file.filename;
+  }
+  console.log("FILENAME: ", fileName);
+  await postData.addNewPost(request.session.username, request.body, fileName);
+  console.log("body: ", request.body);
+  console.log("Posts: ", posts);
+  response.render("pages/app");
 });
 
 // controller for receiving previous posts

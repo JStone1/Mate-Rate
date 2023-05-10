@@ -12,11 +12,17 @@
       </form>
     </header>
     <h1>App page</h1>
-    <form>
+    <!-- <form>
       <label for="post-text">What's on your mind?</label>
       <input type="text" id="post-text" name="post" />
+    </form> -->
+    <form action="/newPost" enctype="multipart/form-data" method="post">
+      <label for="post-text">What's on your mind?</label>
+      <input type="file" name="myImage" accept="image/*">
+      <input type="text" id="post-text" name="post">
+      <input type="submit" value="Post">
     </form>
-    <button id="post-button">Post</button>
+    <!-- <button id="post-button">Post</button> -->
   </body>
   <script type="module" src="./scripts/utils.js"></script>
   <script type="module" src="./scripts/posts.js"></script>

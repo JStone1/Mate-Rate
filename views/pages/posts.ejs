@@ -20,6 +20,9 @@
         <h2><strong><%=result.username%></strong></h2>
         <p>Post Number: <%=result.postNumber%></p>
         <p class="post-text"><%=result.postText%></p>
+        <%if(result.imagePath) {%>
+          <img src="<%=result.imagePath%>" style="width: 100px;">
+          <%}%>
         <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
         <form id="rating-submit" method="post" action="/updateScore">
           <div class="rate">
