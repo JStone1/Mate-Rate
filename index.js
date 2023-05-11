@@ -180,3 +180,5 @@ app.get("/profile", checkLoggedIn, async (request, response) => {
   let userPosts = await postData.findUserPosts(user.username);
   response.render("pages/profile", { data: { user: user, posts: userPosts } });
 });
+
+app.post("/updateBio", (request, response) => {});

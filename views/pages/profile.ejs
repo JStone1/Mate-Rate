@@ -13,6 +13,7 @@
     </header>
     <h1><%=data.user.username%>'s profile</h1>
     <p><strong>Bio: </strong><%=data.user.bio%></p>
+    <button id="update-bio-btn">Update Bio</button>
     <h2>Recent posts</h2>
     <ul id="profile-posts">
     <% data.posts.forEach(result => {%>
@@ -26,5 +27,6 @@
     </ul>
   </body>
   <script type="module" src="./scripts/utils.js"></script>
+  <script type="module" src="./scripts/posts.js"></script>
   <script type="module" src="./scripts/posts.js"></script>
 </html>
