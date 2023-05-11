@@ -181,4 +181,8 @@ app.get("/profile", checkLoggedIn, async (request, response) => {
   response.render("pages/profile", { data: { user: user, posts: userPosts } });
 });
 
-app.post("/updateBio", (request, response) => {});
+// Add in feedback on frontend after update
+app.post("/updateBio", (request, response) => {
+  console.log("Got to the backend", request.body.bio);
+  userData.updateBio(request.session.username, request.body.bio);
+});

@@ -1,4 +1,4 @@
-import { newPost } from "./posts.js";
+// import { newPost } from "./posts.js";
 
 let postText = document.getElementById("post-text");
 
