@@ -42,6 +42,7 @@ const postData = require("./models/Post.js"); // access to post model
 const userData = require("./models/User.js"); // access to user model
 
 const mongoose = require("mongoose"); // access to mongoose
+const { stringify } = require("querystring");
 
 mongoose.connect(
   // connect to MongoDB instance
@@ -168,7 +169,11 @@ app.post("/updateScore", async (request, response) => {
   console.log("Score: ", score);
   let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
   console.log("Post: ", post);
+  let user = await userData.findUser(request.session.username);
+  console.log("user.username:", user.username);
   postData.ratePost(post, score);
+  await userData.updatePostScores(user.username, score);
+  await userData.updateProfileScore(user.username, user.postScores);
   response.status(204); // http code for "No content" - stops page from waiting for response
   response.send(console.log("Score updated"));
 });
@@ -176,7 +181,6 @@ app.post("/updateScore", async (request, response) => {
 app.get("/profile", checkLoggedIn, async (request, response) => {
   console.log("Current user: ", request.session.username);
   let user = await userData.findUser(request.session.username);
-  console.log("HERE:", user);
   let userPosts = await postData.findUserPosts(user.username);
   response.render("pages/profile", { data: { user: user, posts: userPosts } });
 });

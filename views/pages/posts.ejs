@@ -27,6 +27,7 @@
         <form id="rating-submit" method="post" action="/updateScore">
           <div class="rate">
             <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
+            <input type="hidden" id="postAuthor" name="postAuthor" value="<%=result.username%>" >
             <input
               type="radio"
               id="star5_<%=result.postNumber%>"

@@ -6,6 +6,7 @@ const userSchema = new Schema({
   password: String,
   // userImage: "",
   bio: String,
+  postScores: Array,
   profileScore: Number,
   amountProfileVoted: Number,
   recentPosts: Array,
@@ -22,6 +23,7 @@ async function addNewUser(username, password) {
     loggedin: false,
     bio: "Welcome to my profile!",
     profileScore: 0,
+    postScores: [0], // adds an initial score to the array to prevent crash (look at changing)
   };
   await User.create(user).catch((error) => {
     console.log("ERROR: ", error);
@@ -95,6 +97,29 @@ async function updateBio(user, bio) {
   User.find({ username: user }).updateOne({ bio: bio }).exec();
 }
 
+async function updatePostScores(username, postScore) {
+  await User.updateOne(
+    { username: username },
+    { $push: { postScores: postScore } }
+  ).exec();
+
+  // console.log(User.find({ postScores }));
+}
+
+async function updateProfileScore(username, score) {
+  console.log("HERE:", score);
+  total = 0;
+  for (let i = 0; i < score.length; i++) {
+    total += score[i];
+  }
+  let newScore = total / score.length;
+  console.log("New score:", newScore);
+
+  await User.find({ username: username })
+    .updateOne({ profileScore: newScore })
+    .exec();
+}
+
 // exports all functions from model
 module.exports = {
   addNewUser,
@@ -104,4 +129,6 @@ module.exports = {
   setLoggedIn,
   checkLoggedIn,
   updateBio,
+  updatePostScores,
+  updateProfileScore,
 };
