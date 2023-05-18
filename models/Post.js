@@ -11,8 +11,7 @@ const postSchema = new Schema(
     postText: String,
     postScore: Number,
     amountPostVoted: Number,
-    postReview: String,
-    tags: [String],
+    whoVoted: [String],
   },
   { timestamps: true }
 );
@@ -31,6 +30,7 @@ async function addNewPost(username, post, imageFile) {
     imagePath: imageFile,
     postText: post.post,
     postReview: "hard coded review",
+    amountPostVoted: 0,
   };
   Post.create(newPost).catch((error) => {
     console.log("Error: ", error);
@@ -70,6 +70,7 @@ async function getOnePost(postNum) {
 async function ratePost(postNum, rating) {
   let post = await Post.find({ postNumber: postNum })
     .updateOne({ postScore: rating })
+    .updateOne({ $inc: { amountPostVoted: 1 } })
     .exec();
   console.log("Updated post: ", post);
   return post;
