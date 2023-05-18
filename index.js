@@ -171,7 +171,7 @@ app.post("/updateScore", async (request, response) => {
   console.log("Post: ", post);
   let user = await userData.findUser(request.session.username);
   console.log("user.username:", user.username);
-  postData.ratePost(post, score);
+  postData.ratePost(post, score, user._id);
   await userData.updatePostScores(user.username, score);
   await userData.updateProfileScore(user.username, user.postScores);
   response.status(204); // http code for "No content" - stops page from waiting for response

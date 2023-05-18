@@ -67,10 +67,11 @@ async function getOnePost(postNum) {
   return post;
 }
 
-async function ratePost(postNum, rating) {
+async function ratePost(postNum, rating, userId) {
   let post = await Post.find({ postNumber: postNum })
     .updateOne({ postScore: rating })
     .updateOne({ $inc: { amountPostVoted: 1 } })
+    .updateOne({ $push: { whoVoted: userId } })
     .exec();
   console.log("Updated post: ", post);
   return post;
