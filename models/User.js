@@ -8,7 +8,6 @@ const userSchema = new Schema({
   bio: String,
   postScores: Array,
   profileScore: Number,
-  amountProfileVoted: Number,
   recentPosts: Array,
   isLoggedIn: Boolean,
 });

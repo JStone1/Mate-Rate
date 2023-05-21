@@ -24,6 +24,11 @@
           <img src="<%=result.imagePath%>" style="width: 100px;">
           <%}%>
         <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
+        <%if(result.whoVoted.includes(data.userID)) {%>
+          <h2>You have already rated post</h2>
+        <% } else if(result.username == data.username) {%>
+          <h2>You cannot rate your own post</h2>
+        <% } else {%>
         <form id="rating-submit" method="post" action="/updateScore">
           <div class="rate">
             <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
@@ -33,9 +38,7 @@
               id="star5_<%=result.postNumber%>"
               name="rate_<%=result.postNumber%>"
               value="5"
-              <%if(result.postScore == 5){%>
-                checked="checked"
-                <%}%>
+
             />
             <label for="star5_<%=result.postNumber%>" title="text"
               >5 stars</label
@@ -45,9 +48,7 @@
               id="star4_<%=result.postNumber%>"
               name="rate_<%=result.postNumber%>"
               value="4"
-              <%if(result.postScore == 4){%>
-                checked="checked"
-                <%}%>
+
             />
               <label for="star4_<%=result.postNumber%>" title="text"
               >4 stars</label
@@ -57,9 +58,7 @@
               id="star3_<%=result.postNumber%>"
               name="rate_<%=result.postNumber%>"
               value="3"
-              <%if(result.postScore == 3){%>
-                checked="checked"
-                <%}%>
+
             />
               <label for="star3_<%=result.postNumber%>" title="text"
               >3 stars</label
@@ -69,9 +68,7 @@
               id="star2_<%=result.postNumber%>"
               name="rate_<%=result.postNumber%>"
               value="2"
-              <%if(result.postScore == 2){%>
-                checked="checked"
-                <%}%>
+
             />
               <label for="star2_<%=result.postNumber%>" title="text"
               >2 stars</label
@@ -81,9 +78,7 @@
               id="star1_<%=result.postNumber%>"
               name="rate_<%=result.postNumber%>"
               value="1"
-              <%if(result.postScore == 1){%>
-                checked="checked"
-                <%}%>
+
             />
               <label for="star1_<%=result.postNumber%>" title="text"
               >1 star</label
@@ -92,6 +87,7 @@
 
           <button type="submit">Submit rating</button>
         </form>
+        <%}%>
       </li>
       <% }) %>
     </ul>

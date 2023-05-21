@@ -68,6 +68,8 @@ app.post("/login", async (request, response) => {
   // checks if user exists, then checks if password matches
   if (userData.findUser(user.username)) {
     if (await userData.checkPassword(user.username, user.password)) {
+      let loggedInUser = await userData.findUser(user.username);
+      request.session.userID = loggedInUser._id;
       request.session.username = user.username;
       userData.setLoggedIn(user.username, true);
       response.render("pages/app");
@@ -129,7 +131,14 @@ app.get("/posts", checkLoggedIn, async (request, response) => {
   posts.forEach((post) => {
     post.createdAt.toString();
   });
-  response.render("pages/posts", { data: { posts: posts } });
+  console.log(request.session);
+  response.render("pages/posts", {
+    data: {
+      posts: posts,
+      userID: request.session.userID,
+      username: request.session.username,
+    },
+  });
 });
 
 // app.post("/newPost", (request, response) => {
