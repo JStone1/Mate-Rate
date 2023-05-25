@@ -198,6 +198,7 @@ app.get("/profile", checkLoggedIn, async (request, response) => {
 app.post("/updateBio", (request, response) => {
   console.log("Got to the backend", request.body.bio);
   userData.updateBio(request.session.username, request.body.bio);
+  response.redirect(request.get("referer")); // redirects to current page
 });
 
 // Add in feedback on frontend after update
@@ -207,14 +208,7 @@ app.post("/updatePassword", (request, response) => {
 });
 
 app.post("/removePost", async (request, response) => {
-  let posts = await postData.getPosts();
   let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
   postData.removePost(post);
-  response.render("pages/posts", {
-    data: {
-      posts: posts,
-      userID: request.session.userID,
-      username: request.session.username,
-    },
-  });
+  response.redirect(request.get("referer")); // redirects to current page
 });

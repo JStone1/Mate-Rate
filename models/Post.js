@@ -80,7 +80,7 @@ async function ratePost(postNum, rating, userId) {
 }
 
 async function findUserPosts(user) {
-  let posts = await Post.find({ username: user }).exec();
+  let posts = await Post.find({ username: user, archived: false }).exec();
   return posts;
 }
 

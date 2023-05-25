@@ -45,6 +45,7 @@ passwordBtn.addEventListener("click", async () => {
   let userInfo = {
     password: newPassword.value,
   };
+  newPassword.value = "";
   fetch("/updatePassword", {
     method: "POST",
     headers: {
