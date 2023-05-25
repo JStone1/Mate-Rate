@@ -23,6 +23,10 @@ form {
   }
 }
 
+.center-div {
+  @include centerContent(column);
+}
+
 .page-nav {
   @include horizontalList(15px);
   color: white;

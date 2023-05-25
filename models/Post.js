@@ -12,6 +12,7 @@ const postSchema = new Schema(
     postScore: Number,
     amountPostVoted: Number,
     whoVoted: [String],
+    archived: Boolean,
   },
   { timestamps: true }
 );
@@ -31,6 +32,7 @@ async function addNewPost(username, post, imageFile) {
     postText: post.post,
     postReview: "hard coded review",
     amountPostVoted: 0,
+    archived: false,
   };
   Post.create(newPost).catch((error) => {
     console.log("Error: ", error);
@@ -40,7 +42,7 @@ async function addNewPost(username, post, imageFile) {
 
 async function getPosts(n = 5) {
   let data = [];
-  await Post.find({})
+  await Post.find({ archived: false })
     .sort({ createdAt: -1 })
     .limit(n)
     .exec()
@@ -82,4 +84,17 @@ async function findUserPosts(user) {
   return posts;
 }
 
-module.exports = { addNewPost, getPosts, getOnePost, ratePost, findUserPosts };
+async function removePost(postNum) {
+  await Post.find({ postNumber: postNum }).updateOne({
+    archived: true,
+  });
+}
+
+module.exports = {
+  addNewPost,
+  getPosts,
+  getOnePost,
+  ratePost,
+  findUserPosts,
+  removePost,
+};

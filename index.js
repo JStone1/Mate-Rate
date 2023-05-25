@@ -199,3 +199,17 @@ app.post("/updateBio", (request, response) => {
   console.log("Got to the backend", request.body.bio);
   userData.updateBio(request.session.username, request.body.bio);
 });
+
+app.post("/removePost", async (request, response) => {
+  console.log(request);
+  let posts = await postData.getPosts();
+  let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
+  postData.removePost(post);
+  response.render("pages/posts", {
+    data: {
+      posts: posts,
+      userID: request.session.userID,
+      username: request.session.username,
+    },
+  });
+});

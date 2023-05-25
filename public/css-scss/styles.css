@@ -26,6 +26,12 @@ form {
   form input {
     margin: 10px; }
 
+.center-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
 .page-nav {
   display: flex;
   flex-direction: row;

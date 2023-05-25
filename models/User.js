@@ -119,6 +119,10 @@ async function updateProfileScore(username, score) {
     .exec();
 }
 
+async function updatePassword(username, password) {
+  User.find({ username: username }).updateOne({ password: password }).exec();
+}
+
 // exports all functions from model
 module.exports = {
   addNewUser,
