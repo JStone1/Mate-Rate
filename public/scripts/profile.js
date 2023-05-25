@@ -35,8 +35,21 @@ bioBtn.addEventListener("click", async () => {
     },
     body: JSON.stringify(userInfo),
   });
-  // .then((response) => response.json())
-  // .then((myJson) => {
-  //   console.log("JSON:", myJson);
-  // });
+});
+
+let passwordBtn = document.getElementById("update-password-btn");
+let newPassword = document.getElementById("new-password-text");
+console.log(newPassword);
+
+passwordBtn.addEventListener("click", async () => {
+  let userInfo = {
+    password: newPassword.value,
+  };
+  fetch("/updatePassword", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  });
 });

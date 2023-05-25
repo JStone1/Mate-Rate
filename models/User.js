@@ -134,4 +134,5 @@ module.exports = {
   updateBio,
   updatePostScores,
   updateProfileScore,
+  updatePassword,
 };

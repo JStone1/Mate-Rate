@@ -200,8 +200,13 @@ app.post("/updateBio", (request, response) => {
   userData.updateBio(request.session.username, request.body.bio);
 });
 
+// Add in feedback on frontend after update
+app.post("/updatePassword", (request, response) => {
+  console.log("Got to the backend", request.body.password);
+  userData.updatePassword(request.session.username, request.body.password);
+});
+
 app.post("/removePost", async (request, response) => {
-  console.log(request);
   let posts = await postData.getPosts();
   let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
   postData.removePost(post);
