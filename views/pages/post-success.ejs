@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+  </head>
+  <body>
+    <header>
+      <h1>Mate Rate</h1>
+      <nav><%- include("../partials/nav") %></nav>
+      <form action="/logout" method="post">
+        <input id="logout-button" type="submit" value="Logout" />
+      </form>
+    </header>
+    <h1 class="main-page-title">Post successful!</h1>
+    <p style="text-align: center;">(let's hope they like it...)</p>
+    <main class="main-page-container">
+      <article id="post-success-section">
+        <a href="/new-post"><button>Post again</button></a>
+        <a href="/posts"><button>View posts</button></a>
+      </article>
+    </main>
+    <!-- <button id="post-button">Post</button> -->
+  </body>
+  <script type="module" src="./scripts/utils.js"></script>
+  <script type="module" src="./scripts/posts.js"></script>
+</html>

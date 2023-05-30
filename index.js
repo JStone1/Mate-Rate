@@ -72,7 +72,7 @@ app.post("/login", async (request, response) => {
       request.session.userID = loggedInUser._id;
       request.session.username = user.username;
       userData.setLoggedIn(user.username, true);
-      response.render("pages/app");
+      response.render("pages/new-post");
     } else {
       response.render("pages/login");
     }
@@ -119,9 +119,9 @@ function checkLoggedIn(request, response, nextAction) {
 }
 
 //controller for the main app view, depends on user logged in state
-app.get("/app", checkLoggedIn, async (request, response) => {
+app.get("/new-post", checkLoggedIn, async (request, response) => {
   // uses checkLoggedIn function as validation before redirecting user to app
-  response.render("pages/app");
+  response.render("pages/new-post");
 });
 
 //controller for the posts page view, depends on user logged in state
@@ -146,6 +146,10 @@ app.get("/posts", checkLoggedIn, async (request, response) => {
 //   postData.addNewPost(request.session.username, request.body);
 // });
 
+app.get("/new-post", async (request, response) => {
+  response.render("pages/new-post");
+});
+
 // controller for adding a new post
 app.post("/newPost", upload.single("myImage"), async (request, response) => {
   console.log(request.file);
@@ -158,7 +162,7 @@ app.post("/newPost", upload.single("myImage"), async (request, response) => {
   await postData.addNewPost(request.session.username, request.body, fileName);
   console.log("body: ", request.body);
   console.log("Posts: ", posts);
-  response.render("pages/app");
+  response.render("pages/post-success");
 });
 
 // controller for receiving previous posts

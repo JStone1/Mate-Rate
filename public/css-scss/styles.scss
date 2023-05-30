@@ -22,6 +22,11 @@ h3 {
   margin: 30px 0px;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -32,8 +37,7 @@ form {
   }
   input[type="submit"] {
     align-self: center;
-    width: 120px;
-    height: 35px;
+    @include buttonStyle(120px, 35px, 0px, 1rem);
   }
 }
 
@@ -49,10 +53,6 @@ header {
 .page-nav {
   @include horizontalList(15px);
   color: white;
-}
-
-#logout-button {
-  color: black;
 }
 
 // landing page
@@ -123,6 +123,17 @@ header {
   resize: none;
   white-space: pre-wrap;
   margin: 5px 0px;
+}
+
+// post success
+
+#post-success-section {
+  @include centerContent(column);
+  gap: 5em;
+  button {
+    @include buttonStyle(300px, 150px, 50px, 2rem);
+  }
+  margin-top: 50px;
 }
 
 #recent-posts {
