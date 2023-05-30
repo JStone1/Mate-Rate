@@ -105,7 +105,7 @@ header {
   background-color: rgba(145, 145, 145, 0.35);
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
-  padding: 50px;
+  padding: 20px;
   width: 400px;
   height: 400px; }
   #info-section li {
@@ -124,7 +124,7 @@ header {
   background-color: rgba(145, 145, 145, 0.35);
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
-  padding: 50px;
+  padding: 20px;
   width: 400px;
   height: 400px; }
   #login-section p {
@@ -138,7 +138,7 @@ header {
   background-color: rgba(145, 145, 145, 0.35);
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
-  padding: 50px;
+  padding: 20px;
   width: 400px;
   height: 400px; }
   #register-section p {
@@ -152,7 +152,7 @@ header {
   background-color: rgba(145, 145, 145, 0.35);
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
-  padding: 50px;
+  padding: 20px;
   width: 700px;
   height: 400px;
   padding: 0;
@@ -204,7 +204,7 @@ header {
   background-color: rgba(145, 145, 145, 0.35);
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
-  padding: 50px;
+  padding: 20px;
   width: 700px;
   height: 600px;
   padding: 0; }
@@ -249,30 +249,54 @@ header {
   overflow: auto;
   resize: none; }
 
-.star-container {
+#profile-posts {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  direction: rtl; }
-  .star-container span {
-    cursor: pointer;
-    margin: 0px 2px; }
+  gap: 4rem; }
+  #profile-posts li {
+    width: 500px; }
 
-.star1:hover ~ span {
-  color: orange; }
+#settings-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  background-color: rgba(145, 145, 145, 0.35);
+  box-shadow: 4px 2px 18px 0px #6e6e6e inset;
+  border-radius: 10px;
+  padding: 20px;
+  width: 600px;
+  height: 400px; }
 
-.star2:hover ~ span {
-  color: orange; }
-
-.star3:hover ~ span {
-  color: orange; }
-
-.star4:hover ~ span {
-  color: orange; }
-
-.star5:hover ~ span {
-  color: orange; }
+.update-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1em; }
+  .update-container label {
+    width: 140px;
+    text-align: right; }
+  .update-container input {
+    width: 250px;
+    height: 30px; }
+  .update-container button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(145, 145, 145, 0.35);
+    box-shadow: 4px 2px 18px 0px #6e6e6e inset;
+    border-radius: 10px;
+    color: black;
+    width: 80px;
+    height: 35px;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-weight: 700; }
 
 .rate {
   float: left;
@@ -308,14 +332,5 @@ header {
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08; }
-
-#profile-posts {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem; }
-  #profile-posts li {
-    width: 500px; }
 
 /*# sourceMappingURL=styles.css.map */

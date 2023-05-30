@@ -54,3 +54,23 @@ passwordBtn.addEventListener("click", async () => {
     body: JSON.stringify(userInfo),
   });
 });
+
+// Add in delete profile below //
+
+// let deleteProfileBtn = document.getElementById("delete-profile-btn");
+// let confirmDeleteText = document.getElementById("confirm-delete-tex");
+// console.log(newPassword);
+
+// deleteProfileBtn.addEventListener("click", async () => {
+//   let userInfo = {
+//     password: newPassword.value,
+//   };
+//   newPassword.value = "";
+//   fetch("/updatePassword", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(userInfo),
+//   });
+// });

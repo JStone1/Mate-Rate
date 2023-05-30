@@ -198,6 +198,13 @@ app.get("/profile", checkLoggedIn, async (request, response) => {
   response.render("pages/profile", { data: { user: user, posts: userPosts } });
 });
 
+app.get("/settings", checkLoggedIn, async (request, response) => {
+  console.log("Current user: ", request.session.username);
+  let user = await userData.findUser(request.session.username);
+  let userPosts = await postData.findUserPosts(user.username);
+  response.render("pages/settings", { data: { user: user, posts: userPosts } });
+});
+
 // Add in feedback on frontend after update
 app.post("/updateBio", (request, response) => {
   console.log("Got to the backend", request.body.bio);

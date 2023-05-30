@@ -11,7 +11,7 @@
         <input id="logout-button" type="submit" value="Logout" />
       </form>
     </header>
-    <h1><%=data.user.username%>'s profile</h1>
+    <h1 class="main-page-title"><%=data.user.username%>'s profile</h1>
       <h2>User score: <%=data.user.profileScore.toString().substring(0,3)%></h2>
       <%if(!data.user.profileScore) {%>
         <p>Gain a score by getting rates on your posts</p>

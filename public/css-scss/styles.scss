@@ -197,32 +197,38 @@ header {
   resize: none;
 }
 
-.star-container {
+// profile
+
+#profile-posts {
   @include centerContent(row);
-  direction: rtl;
-  span {
-    cursor: pointer;
-    margin: 0px 2px;
-    // &:hover {
-    //   color: orange;
-    // }
+  gap: 4rem;
+  li {
+    width: 500px;
   }
 }
 
-.star1:hover ~ span {
-  color: orange;
+// settings
+
+#settings-section {
+  @include centerContent(column);
+  gap: 3em;
+  @include containerStyle(600px, 400px);
 }
-.star2:hover ~ span {
-  color: orange;
-}
-.star3:hover ~ span {
-  color: orange;
-}
-.star4:hover ~ span {
-  color: orange;
-}
-.star5:hover ~ span {
-  color: orange;
+
+.update-container {
+  @include centerContent(row);
+  gap: 1em;
+  label {
+    width: 140px;
+    text-align: right;
+  }
+  input {
+    width: 250px;
+    height: 30px;
+  }
+  button {
+    @include buttonStyle(80px, 35px, 10px, 0.9rem);
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -261,12 +267,4 @@ header {
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
-}
-
-#profile-posts {
-  @include centerContent(row);
-  gap: 4rem;
-  li {
-    width: 500px;
-  }
 }
