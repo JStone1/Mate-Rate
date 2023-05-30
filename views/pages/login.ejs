@@ -10,17 +10,31 @@
   </head>
   <body>
     <header>
-      <h1>Social Media App</h1>
+      <h1>Mate Rate</h1>
       <nav><%- include("../partials/nav") %></nav>
     </header>
-    <h1>Login</h1>
-    <form action="/login" method="post">
-      <label for="login-username">Username</label>
-      <input type="text" id="login-username" name="username" />
-      <label for="login-password">Password</label>
-      <input type="password" id="login-password" name="password" />
-      <input type="submit" value="Login" />
-    </form>
+    <h1 id="landing-page-title">Welcome to Mate Rate!</h1>
+    <main class="landing-page-container">
+      <article id="info-section">
+        <h2>What is it?</h2>
+        <ul>
+          <li>Rate your friend's posts using a five star rating system.</li>
+          <li>Post ratings contribute to your profile score.</li>
+          <li>The higher your profile score, the more people like you (obviously).</li>
+        </ul>
+      </article>
+      <article id="login-section">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" />
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" />
+          <input type="submit" value="Login" />
+        </form>
+        <p>Don't have an account? <a href="/register">Register here!</a></p>
+      </article>
+    </main>
   </body>
   <script type="module" src="./scripts/utils.js"></script>
   <script type="module" src="./scripts/posts.js"></script>

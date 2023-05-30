@@ -7,7 +7,6 @@
 
 @mixin horizontalList($sideMargin) {
   @include centerContent(row);
-  list-style: none;
   li {
     margin: 0px $sideMargin;
     cursor: pointer;
@@ -26,4 +25,13 @@
   @media screen and (min-width: $minwidth) and (max-width: $maxwidth) {
     @content;
   }
+}
+
+@mixin containerStyle() {
+  background-color: rgba(145, 145, 145, 0.35);
+  box-shadow: 4px 2px 18px 0px #6e6e6e inset;
+  border-radius: 10px;
+  padding: 50px;
+  min-height: 400px;
+  min-width: 300px;
 }
