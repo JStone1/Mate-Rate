@@ -35,8 +35,7 @@ form {
   @include centerContent(column);
   input {
     margin: 10px 0px;
-    width: 220px;
-    max-width: 350px;
+    width: 200px;
   }
   input[type="submit"] {
     align-self: center;
@@ -115,17 +114,20 @@ header {
 
 #new-post-section {
   @include centerContent(column);
-  @include containerStyle(400px, 400px);
+  @include containerStyle(700px, 400px);
+  padding: 0;
   justify-content: space-around;
+  form {
+    align-items: start;
+    gap: 0.6em;
+    div {
+      align-self: center;
+    }
+  }
 }
 
-#post-text {
-  min-height: 200px;
-  width: 400px;
-  max-width: 450px;
-  resize: none;
-  white-space: pre-wrap;
-  margin: 5px 0px;
+#add-image-button {
+  width: 600px;
 }
 
 // post success
@@ -159,7 +161,7 @@ header {
   }
 }
 
-#user-details {
+.user-details {
   @include centerContent(column);
   margin: 15px 0px 0px 0px;
   font-weight: 300;
@@ -169,10 +171,6 @@ header {
       gap: 1em;
     }
   }
-}
-
-#rating-submit {
-  // border: 1px solid black;
 }
 
 #post-details {
@@ -196,6 +194,7 @@ header {
   font-size: 1.2rem;
   word-wrap: break-word;
   overflow: auto;
+  resize: none;
 }
 
 .star-container {
