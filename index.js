@@ -125,14 +125,14 @@ app.get("/new-post", checkLoggedIn, async (request, response) => {
 });
 
 //controller for the posts page view, depends on user logged in state
-app.get("/posts", checkLoggedIn, async (request, response) => {
+app.get("/view-posts", checkLoggedIn, async (request, response) => {
   let posts = await postData.getPosts();
   console.log("Current posts: ", posts);
   posts.forEach((post) => {
     post.createdAt.toString();
   });
   console.log(request.session);
-  response.render("pages/posts", {
+  response.render("pages/view-posts", {
     data: {
       posts: posts,
       userID: request.session.userID,

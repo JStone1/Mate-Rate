@@ -27,9 +27,12 @@ a {
   text-decoration: none;
 }
 
+button {
+  @include buttonStyle(120px, 35px, 0px, 1rem);
+}
+
 form {
-  display: flex;
-  flex-direction: column;
+  @include centerContent(column);
   input {
     margin: 10px 0px;
     width: 220px;
@@ -75,7 +78,7 @@ header {
 
 #info-section {
   @include centerContent(column);
-  @include containerStyle;
+  @include containerStyle(400px, 400px);
   li {
     font-size: 1rem;
   }
@@ -92,7 +95,7 @@ header {
 
 #login-section {
   @include centerContent(column);
-  @include containerStyle;
+  @include containerStyle(400px, 400px);
   p {
     text-align: center;
   }
@@ -102,7 +105,7 @@ header {
 
 #register-section {
   @include centerContent(column);
-  @include containerStyle;
+  @include containerStyle(400px, 400px);
   p {
     text-align: center;
   }
@@ -112,7 +115,7 @@ header {
 
 #new-post-section {
   @include centerContent(column);
-  @include containerStyle;
+  @include containerStyle(400px, 400px);
   justify-content: space-around;
 }
 
@@ -136,15 +139,31 @@ header {
   margin-top: 50px;
 }
 
+// view posts
+
 #recent-posts {
-  min-width: 50vw;
+  @include centerContent(column);
+  gap: 5em;
 }
 
 .post {
   @include centerContent(column);
-  border: 2px solid gray;
-  padding: 15px;
-  margin: 20px 0px;
+  justify-content: space-between;
+  @include containerStyle(700px, 400px);
+  padding: 0;
+  h2 {
+    margin: 20px 0px 0px 0px;
+  }
+  form {
+    margin: 0px 0px 20px 0px;
+  }
+  img {
+    max-width: 200px;
+  }
+}
+
+#rating-submit {
+  // border: 1px solid black;
 }
 
 .post-text {

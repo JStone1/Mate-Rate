@@ -21,9 +21,26 @@ a {
   color: black;
   text-decoration: none; }
 
+button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(145, 145, 145, 0.35);
+  box-shadow: 4px 2px 18px 0px #6e6e6e inset;
+  border-radius: 10px;
+  color: black;
+  width: 120px;
+  height: 35px;
+  padding: 0px;
+  font-size: 1rem;
+  font-weight: 700; }
+
 form {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
   form input {
     margin: 10px 0px;
     width: 220px;
@@ -90,9 +107,8 @@ header {
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
   padding: 50px;
-  min-height: 400px;
-  min-width: 300px;
-  width: 400px; }
+  width: 400px;
+  height: 400px; }
   #info-section li {
     font-size: 1rem; }
   #info-section li::before {
@@ -110,9 +126,8 @@ header {
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
   padding: 50px;
-  min-height: 400px;
-  min-width: 300px;
-  width: 400px; }
+  width: 400px;
+  height: 400px; }
   #login-section p {
     text-align: center; }
 
@@ -125,9 +140,8 @@ header {
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
   padding: 50px;
-  min-height: 400px;
-  min-width: 300px;
-  width: 400px; }
+  width: 400px;
+  height: 400px; }
   #register-section p {
     text-align: center; }
 
@@ -140,9 +154,8 @@ header {
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
   padding: 50px;
-  min-height: 400px;
-  min-width: 300px;
   width: 400px;
+  height: 400px;
   justify-content: space-around; }
 
 #post-text {
@@ -176,16 +189,31 @@ header {
     font-weight: 700; }
 
 #recent-posts {
-  min-width: 50vw; }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5em; }
 
 .post {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid gray;
-  padding: 15px;
-  margin: 20px 0px; }
+  justify-content: space-between;
+  background-color: rgba(145, 145, 145, 0.35);
+  box-shadow: 4px 2px 18px 0px #6e6e6e inset;
+  border-radius: 10px;
+  padding: 50px;
+  width: 700px;
+  height: 400px;
+  padding: 0; }
+  .post h2 {
+    margin: 20px 0px 0px 0px; }
+  .post form {
+    margin: 0px 0px 20px 0px; }
+  .post img {
+    max-width: 200px; }
 
 .post-text {
   font-weight: bold;
