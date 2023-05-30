@@ -11,17 +11,19 @@
         <input id="logout-button" type="submit" value="Logout" />
       </form>
     </header>
-    <h1>App page</h1>
-    <!-- <form>
-      <label for="post-text">What's on your mind?</label>
-      <input type="text" id="post-text" name="post" />
-    </form> -->
-    <form action="/newPost" enctype="multipart/form-data" method="post">
-      <label for="post-text">What's on your mind?</label>
-      <input type="file" name="myImage" accept="image/*">
-      <input type="text" id="post-text" name="post">
-      <input type="submit" value="Post">
-    </form>
+    <h1 class="main-page-title">What's on your mind?</h1>
+    <main class="main-page-container">
+      <article id="new-post-section">
+        <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+        <form action="/newPost" enctype="multipart/form-data" method="post">
+          <label for="post-text">What's on your mind?</label>
+          <textarea type="text" id="post-text" name="post"></textarea>
+          <label for="add-image-button">Add an image?</label>
+          <input id="add-image-button" type="file" name="myImage" accept="image/*">
+          <input type="submit" value="Post">
+        </form>
+      </article>
+    </main>
     <!-- <button id="post-button">Post</button> -->
   </body>
   <script type="module" src="./scripts/utils.js"></script>

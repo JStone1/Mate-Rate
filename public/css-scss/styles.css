@@ -17,6 +17,18 @@ h3 {
   font-family: "Francois One", sans-serif;
   margin: 30px 0px; }
 
+form {
+  display: flex;
+  flex-direction: column; }
+  form input {
+    margin: 10px 0px;
+    width: 220px;
+    max-width: 350px; }
+  form input[type="submit"] {
+    align-self: center;
+    width: 120px;
+    height: 35px; }
+
 header {
   display: flex;
   flex-direction: column;
@@ -55,7 +67,7 @@ header {
   gap: 20em; }
   .main-page-container h2 {
     text-align: center;
-    font-size: 3rem; }
+    font-size: 2.5rem; }
 
 #info-section {
   display: flex;
@@ -92,17 +104,6 @@ header {
   #login-section p {
     text-align: center; }
 
-form {
-  display: flex;
-  flex-direction: column; }
-  form input {
-    margin: 10px 0px;
-    width: 200px; }
-  form input[type="submit"] {
-    align-self: center;
-    width: 120px;
-    height: 35px; }
-
 #register-section {
   display: flex;
   flex-direction: column;
@@ -117,6 +118,28 @@ form {
   width: 400px; }
   #register-section p {
     text-align: center; }
+
+#new-post-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(145, 145, 145, 0.35);
+  box-shadow: 4px 2px 18px 0px #6e6e6e inset;
+  border-radius: 10px;
+  padding: 50px;
+  min-height: 400px;
+  min-width: 300px;
+  width: 400px;
+  justify-content: space-around; }
+
+#post-text {
+  min-height: 200px;
+  width: 400px;
+  max-width: 450px;
+  resize: none;
+  white-space: pre-wrap;
+  margin: 5px 0px; }
 
 #recent-posts {
   min-width: 50vw; }
