@@ -10,11 +10,11 @@
   </head>
   <body>
     <header>
-      <h1>Social Media App</h1>
+      <h1>Mate Rate</h1>
       <nav><%- include("../partials/nav") %></nav>
     </header>
-    <h1 id="landing-page-title">Join Mate Rate Now</h1>
-    <main class="landing-page-container">
+    <h1 class="main-page-title">Join Mate Rate Now</h1>
+    <main class="main-page-container">
       <article id="register-section">
         <h2>Register</h2>
         <form action="/register" method="post">
@@ -24,6 +24,7 @@
           <input type="text" id="resgister-password" name="password" />
           <input type="submit" value="Register" />
         </form>
+        <p>Already have an account? <a href="/login">Login here!</a></p>
       </article>
     </main>
   </body>

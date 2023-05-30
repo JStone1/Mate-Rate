@@ -42,12 +42,12 @@ header {
 
 // landing page
 
-#landing-page-title {
+.main-page-title {
   text-align: center;
   font-size: 4rem;
 }
 
-.landing-page-container {
+.main-page-container {
   @include centerContent(row);
   gap: 20em;
   h2 {
@@ -61,11 +61,13 @@ header {
 #info-section {
   @include centerContent(column);
   @include containerStyle;
+  li {
+    font-size: 1rem;
+  }
   li::before {
     margin-right: 10px;
     content: "\02B50";
   }
-
   li:not(:first-child) {
     margin: 40px 0px;
   }
@@ -76,6 +78,9 @@ header {
 #login-section {
   @include centerContent(column);
   @include containerStyle;
+  p {
+    text-align: center;
+  }
 }
 
 form {
@@ -83,7 +88,7 @@ form {
   flex-direction: column;
   input {
     margin: 10px 0px;
-    width: 100%;
+    width: 200px;
   }
   input[type="submit"] {
     align-self: center;
@@ -94,7 +99,11 @@ form {
 
 // register
 #register-section {
+  @include centerContent(column);
   @include containerStyle;
+  p {
+    text-align: center;
+  }
 }
 
 #recent-posts {
