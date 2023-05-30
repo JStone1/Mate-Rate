@@ -148,17 +148,26 @@ header {
 
 .post {
   @include centerContent(column);
-  justify-content: space-between;
-  @include containerStyle(700px, 400px);
+  justify-content: space-around;
+  @include containerStyle(700px, 600px);
   padding: 0;
   h2 {
-    margin: 20px 0px 0px 0px;
+    margin: 0px;
   }
   form {
-    margin: 0px 0px 20px 0px;
+    margin: 0px 0px 15px 0px;
   }
-  img {
-    max-width: 200px;
+}
+
+#user-details {
+  @include centerContent(column);
+  margin: 15px 0px 0px 0px;
+  font-weight: 300;
+  div {
+    &:first-child {
+      @include centerContent(row);
+      gap: 1em;
+    }
   }
 }
 
@@ -166,9 +175,27 @@ header {
   // border: 1px solid black;
 }
 
+#post-details {
+  @include centerContent(column);
+  p {
+    align-self: start;
+  }
+  img {
+    max-width: 300px;
+    border-radius: 10px;
+  }
+}
+
 .post-text {
-  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 10px;
+  // min-height: 20px;
+  width: 600px;
+  max-height: 40px;
+  padding: 15px;
   font-size: 1.2rem;
+  word-wrap: break-word;
+  overflow: auto;
 }
 
 .star-container {
@@ -217,7 +244,7 @@ header {
   white-space: nowrap;
   cursor: pointer;
   font-size: 30px;
-  color: #ccc;
+  color: #3f3f3f;
 }
 .rate:not(:checked) > label:before {
   content: "★ ";

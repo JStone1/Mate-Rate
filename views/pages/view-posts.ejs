@@ -18,80 +18,91 @@
           <%let ownPost = false%>
           <%if(result.username == data.username){ownPost=true};%>
         <li class="post">
-          <h2><%=result.username%></h2>
-          <!-- <p>Post Number: <%=result.postNumber%></p> -->
-          <p class="post-text"><%=result.postText%></p>
-          <%if(result.imagePath) {%>
-            <img src="<%=result.imagePath%>" >
-            <%}%>
-          <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
-          <%if(result.whoVoted.includes(data.userID)) {%>
-            <p>You have already rated post</p>
-          <% } else if(ownPost) {%>
-            <p>You cannot rate your own post</p>
-            <form action="/removePost" method="post">
-              <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
-              <input id="delete-post-button" type="submit" value="Delete Post" />
-            </form>        
-            <% } else {%>
-          <form id="rating-submit" method="post" action="/updateScore">
-            <div class="rate">
-              <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
-              <input type="hidden" id="postAuthor" name="postAuthor" value="<%=result.username%>" >
-              <input
-                type="radio"
-                id="star5_<%=result.postNumber%>"
-                name="rate_<%=result.postNumber%>"
-                value="5"
-  
-              />
-              <label for="star5_<%=result.postNumber%>" title="text"
-                >5 stars</label
-              >
-              <input
-                type="radio"
-                id="star4_<%=result.postNumber%>"
-                name="rate_<%=result.postNumber%>"
-                value="4"
-  
-              />
-                <label for="star4_<%=result.postNumber%>" title="text"
-                >4 stars</label
-              >
-              <input
-                type="radio"
-                id="star3_<%=result.postNumber%>"
-                name="rate_<%=result.postNumber%>"
-                value="3"
-  
-              />
-                <label for="star3_<%=result.postNumber%>" title="text"
-                >3 stars</label
-              >
-              <input
-                type="radio"
-                id="star2_<%=result.postNumber%>"
-                name="rate_<%=result.postNumber%>"
-                value="2"
-  
-              />
-                <label for="star2_<%=result.postNumber%>" title="text"
-                >2 stars</label
-              >
-              <input
-                type="radio"
-                id="star1_<%=result.postNumber%>"
-                name="rate_<%=result.postNumber%>"
-                value="1"
-  
-              />
-                <label for="star1_<%=result.postNumber%>" title="text"
-                >1 star</label
-              >
+          <div id="user-details">
+            <div>
+              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+              <h2><%=result.username%></h2>  
             </div>
-  
-            <button type="submit">Submit rating</button>
-          </form>
+            <p>User score: 3.6</p>
+          </div>
+          <!-- <p>Post Number: <%=result.postNumber%></p> -->
+          <div id="post-details">
+            <%if(result.imagePath) {%>
+              <img src="<%=result.imagePath%>" >
+              <%}%>
+            <p class="post-text"><%=result.postText%></p>
+          <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
+          </div>
+          <div id="rate-details">
+            <%if(result.whoVoted.includes(data.userID)) {%>
+              <p>You have already rated post</p>
+            <% } else if(ownPost) {%>
+              <p>You cannot rate your own post</p>
+              <form action="/removePost" method="post">
+                <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
+                <input id="delete-post-button" type="submit" value="Delete Post" />
+              </form>        
+              <% } else {%>
+            <form id="rating-submit" method="post" action="/updateScore">
+              <div class="rate">
+                <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
+                <input type="hidden" id="postAuthor" name="postAuthor" value="<%=result.username%>" >
+                <input
+                  type="radio"
+                  id="star5_<%=result.postNumber%>"
+                  name="rate_<%=result.postNumber%>"
+                  value="5"
+    
+                />
+                <label for="star5_<%=result.postNumber%>" title="text"
+                  >5 stars</label
+                >
+                <input
+                  type="radio"
+                  id="star4_<%=result.postNumber%>"
+                  name="rate_<%=result.postNumber%>"
+                  value="4"
+    
+                />
+                  <label for="star4_<%=result.postNumber%>" title="text"
+                  >4 stars</label
+                >
+                <input
+                  type="radio"
+                  id="star3_<%=result.postNumber%>"
+                  name="rate_<%=result.postNumber%>"
+                  value="3"
+    
+                />
+                  <label for="star3_<%=result.postNumber%>" title="text"
+                  >3 stars</label
+                >
+                <input
+                  type="radio"
+                  id="star2_<%=result.postNumber%>"
+                  name="rate_<%=result.postNumber%>"
+                  value="2"
+    
+                />
+                  <label for="star2_<%=result.postNumber%>" title="text"
+                  >2 stars</label
+                >
+                <input
+                  type="radio"
+                  id="star1_<%=result.postNumber%>"
+                  name="rate_<%=result.postNumber%>"
+                  value="1"
+    
+                />
+                  <label for="star1_<%=result.postNumber%>" title="text"
+                  >1 star</label
+                >
+              </div>
+    
+              <button type="submit">Submit rating</button>
+            </form>
+          </div>
+          
           <%}%>
         </li>
         <% }) %>

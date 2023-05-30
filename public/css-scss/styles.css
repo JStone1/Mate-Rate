@@ -200,24 +200,53 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: rgba(145, 145, 145, 0.35);
   box-shadow: 4px 2px 18px 0px #6e6e6e inset;
   border-radius: 10px;
   padding: 50px;
   width: 700px;
-  height: 400px;
+  height: 600px;
   padding: 0; }
   .post h2 {
-    margin: 20px 0px 0px 0px; }
+    margin: 0px; }
   .post form {
-    margin: 0px 0px 20px 0px; }
-  .post img {
-    max-width: 200px; }
+    margin: 0px 0px 15px 0px; }
+
+#user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0px 0px 0px;
+  font-weight: 300; }
+  #user-details div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em; }
+
+#post-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #post-details p {
+    align-self: start; }
+  #post-details img {
+    max-width: 300px;
+    border-radius: 10px; }
 
 .post-text {
-  font-weight: bold;
-  font-size: 1.2rem; }
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 600px;
+  max-height: 40px;
+  padding: 15px;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  overflow: auto; }
 
 .star-container {
   display: flex;
@@ -260,7 +289,7 @@ header {
   white-space: nowrap;
   cursor: pointer;
   font-size: 30px;
-  color: #ccc; }
+  color: #3f3f3f; }
 
 .rate:not(:checked) > label:before {
   content: "★ "; }
