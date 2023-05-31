@@ -1,4 +1,5 @@
 @import "./_mixins.scss";
+@import "./variables.scss";
 @import url("https://fonts.googleapis.com/css2?family=Francois+One&family=Lato:wght@300;400;700&display=swap");
 
 ul {
@@ -10,7 +11,7 @@ li {
 }
 
 body {
-  background-color: whitesmoke;
+  background-color: $accent-colour;
   min-height: 100vh;
   font-family: "Lato", sans-serif;
 }
@@ -23,8 +24,10 @@ h3 {
 }
 
 a {
-  color: black;
-  text-decoration: none;
+  color: $primary-colour;
+  // font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
 }
 
 button {
@@ -36,6 +39,7 @@ form {
   input {
     margin: 10px 0px;
     width: 200px;
+    border-radius: 5px;
   }
   input[type="submit"] {
     align-self: center;
@@ -47,7 +51,7 @@ form {
 
 header {
   @include centerContent(column);
-  background-color: rgb(63, 63, 63);
+  background-color: $primary-colour;
   color: white;
   width: 100%;
 }
@@ -152,6 +156,8 @@ header {
   @include centerContent(column);
   justify-content: space-around;
   @include containerStyle(700px, 600px);
+  border: $primary-colour 4px solid;
+  box-shadow: 4px 2px 18px 0px $black;
   padding: 0;
   h2 {
     margin: 0px;
@@ -236,7 +242,8 @@ header {
   display: flex;
   overflow-x: auto;
   gap: 4rem;
-  width: 1350px;
+  width: 1500px;
+  margin-bottom: 100px;
 }
 
 @keyframes hoverEffect {
@@ -255,6 +262,7 @@ header {
 
 .update-container {
   @include centerContent(row);
+  position: relative;
   gap: 1em;
   label {
     width: 140px;
@@ -265,7 +273,29 @@ header {
     height: 30px;
   }
   button {
-    @include buttonStyle(80px, 35px, 10px, 0.9rem);
+    @include buttonStyle(80px, 35px, 0px, 0.9rem);
+  }
+}
+
+.update-success {
+  position: absolute;
+  top: 25px;
+  left: 158px;
+  right: 0;
+  bottom: 0;
+  color: $primary-colour;
+}
+
+.hidden {
+  display: none;
+}
+
+#delete-profile-btn {
+  @include buttonStyle(100px, 45px, 0px, 0.9rem);
+  background-color: rgb(187, 1, 1);
+  border-color: $black;
+  &:hover {
+    background-color: rgb(146, 0, 0);
   }
 }
 

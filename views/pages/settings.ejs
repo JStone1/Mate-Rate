@@ -14,22 +14,25 @@
     <h1 class="main-page-title">Settings</h1>
     <main class="main-page-container">
       <article id="settings-section">
-        <p id="user-bio">Bio: <%=data.user.bio%></p>
+        <!-- <p id="user-bio">Bio: <%=data.user.bio%></p> -->
+        
           <div class="update-container">
             <label for="bio-text">Update bio</label>
             <input type="text" id="bio-text">
             <button id="update-bio-btn">Confirm</button>
+            <p class="hidden update-success">Bio changed successfully</p>
           </div>
           <div class="update-container">
             <label for="new-password-text">Update Password</label>
             <input type="text" id="new-password-text">
             <button id="update-password-btn">Confirm</button>
+            <p class="hidden update-success">Password changed successfully</p>
           </div>
             <form action="/deleteUser" method="post">
               <label for="delete-profile-btn">Delete account</label>
               <input id="delete-profile-btn" type="submit" value="Delete" />
             </form>
-          <a href="/profile"><button>Done</button></a>
+            <a href="/profile"><button>Done</button></a>
       </article>
 
     </main>
