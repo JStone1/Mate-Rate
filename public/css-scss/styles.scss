@@ -256,8 +256,10 @@ header {
 
 #settings-section {
   @include centerContent(column);
+  justify-content: space-evenly;
   gap: 3em;
-  @include containerStyle(600px, 400px);
+  @include containerStyle(600px, 600px);
+  margin-bottom: 100px;
 }
 
 .update-container {
@@ -275,6 +277,15 @@ header {
   button {
     @include buttonStyle(80px, 35px, 0px, 0.9rem);
   }
+}
+
+#profilepic-container {
+  flex-direction: column;
+}
+
+#add-profilepic-button {
+  width: 205px;
+  max-width: 400px;
 }
 
 .update-success {
@@ -323,16 +334,16 @@ header {
   content: "★ ";
 }
 .rate > input:checked ~ label {
-  color: #ffc700;
+  color: $secondary-colour;
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-  color: #deb217;
+  color: $secondary-colour;
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-  color: #c59b08;
+  color: #ca820e;
 }

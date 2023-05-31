@@ -15,7 +15,10 @@
     <main class="main-page-container">
       <article id="settings-section">
         <!-- <p id="user-bio">Bio: <%=data.user.bio%></p> -->
-        
+        <div id="profilepic-container" class="update-container">
+          <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+          <input id="add-profilepic-button" type="file" name="myImage" accept="image/*">
+        </div>
           <div class="update-container">
             <label for="bio-text">Update bio</label>
             <input type="text" id="bio-text">
@@ -28,11 +31,12 @@
             <button id="update-password-btn">Confirm</button>
             <p class="hidden update-success">Password changed successfully</p>
           </div>
+          <a href="/profile"><button>Done</button></a>
             <form action="/deleteUser" method="post">
-              <label for="delete-profile-btn">Delete account</label>
+              <label for="delete-profile-btn">Delete account?</label>
               <input id="delete-profile-btn" type="submit" value="Delete" />
             </form>
-            <a href="/profile"><button>Done</button></a>
+
       </article>
 
     </main>

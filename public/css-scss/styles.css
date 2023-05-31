@@ -319,6 +319,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  justify-content: space-evenly;
   gap: 3em;
   background-color: #e5e5e5;
   box-shadow: 4px 2px 10px 0px #14213d;
@@ -326,7 +327,8 @@ header {
   border-radius: 10px;
   padding: 20px;
   width: 600px;
-  height: 400px; }
+  height: 600px;
+  margin-bottom: 100px; }
 
 .update-container {
   display: flex;
@@ -356,6 +358,13 @@ header {
     .update-container button:hover {
       background-color: #ca820e;
       text-decoration: none; }
+
+#profilepic-container {
+  flex-direction: column; }
+
+#add-profilepic-button {
+  width: 205px;
+  max-width: 400px; }
 
 .update-success {
   position: absolute;
@@ -410,17 +419,17 @@ header {
   content: "★ "; }
 
 .rate > input:checked ~ label {
-  color: #ffc700; }
+  color: #fca311; }
 
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-  color: #deb217; }
+  color: #fca311; }
 
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-  color: #c59b08; }
+  color: #ca820e; }
 
 /*# sourceMappingURL=styles.css.map */
