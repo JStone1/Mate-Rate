@@ -7,6 +7,7 @@ const postSchema = new Schema(
     username: String,
     profileScore: Number,
     imagePath: String,
+    profilePic: String,
     timePosted: Date,
     postText: String,
     postScore: Number,
@@ -21,7 +22,7 @@ const Post = model("Post", postSchema);
 
 let date = Date().substring(4, 21);
 
-async function addNewPost(username, post, imageFile) {
+async function addNewPost(username, post, imageFile, profilePic) {
   let newPostNumber = await Post.countDocuments({}); // gets the amount of documents in the Post collection
   console.log("Number of docs in Posts: ", newPostNumber);
   let newPost = {
@@ -29,6 +30,7 @@ async function addNewPost(username, post, imageFile) {
     username: username,
     timePosted: Date().substring(4, 21),
     imagePath: imageFile,
+    profilePic: profilePic,
     postText: post.post,
     postReview: "hard coded review",
     amountPostVoted: 0,

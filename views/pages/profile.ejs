@@ -48,8 +48,12 @@
           <li class="post">
             <div class="user-details">
               <div>
-                <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
-                <h2><%=result.username%></h2>  
+                <img style="width: 75px; height: 75px; border-radius: 50%;" 
+                <%if(data.user.profilePicture) {%>
+                  src="<%=data.user.profilePicture%>"
+                  <%}%>
+                />            
+                  <h2><%=result.username%></h2>  
               </div>
             </div>
             <!-- <p>Post Number: <%=result.postNumber%></p> -->

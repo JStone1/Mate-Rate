@@ -4,7 +4,7 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
   username: String,
   password: String,
-  // userImage: "",
+  profilePicture: String,
   bio: String,
   postScores: Array,
   profileScore: Number,
@@ -127,6 +127,12 @@ async function deleteUser(userID) {
   User.deleteOne({ _id: userID }).exec();
 }
 
+async function updateProfilePic(username, imageFile) {
+  User.find({ username: username })
+    .updateOne({ profilePicture: imageFile })
+    .exec();
+}
+
 // exports all functions from model
 module.exports = {
   addNewUser,
@@ -140,4 +146,5 @@ module.exports = {
   updateProfileScore,
   updatePassword,
   deleteUser,
+  updateProfilePic,
 };

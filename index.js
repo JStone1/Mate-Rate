@@ -43,6 +43,7 @@ const userData = require("./models/User.js"); // access to user model
 
 const mongoose = require("mongoose"); // access to mongoose
 const { stringify } = require("querystring");
+const { request } = require("http");
 
 mongoose.connect(
   // connect to MongoDB instance
@@ -127,6 +128,8 @@ app.get("/new-post", checkLoggedIn, async (request, response) => {
 //controller for the posts page view, depends on user logged in state
 app.get("/view-posts", checkLoggedIn, async (request, response) => {
   let posts = await postData.getPosts();
+  let user = await userData.findUser(request.session.username);
+  console.log("Current user: ", user);
   console.log("Current posts: ", posts);
   posts.forEach((post) => {
     post.createdAt.toString();
@@ -135,6 +138,7 @@ app.get("/view-posts", checkLoggedIn, async (request, response) => {
   response.render("pages/view-posts", {
     data: {
       posts: posts,
+      user: user,
       userID: request.session.userID,
       username: request.session.username,
     },
@@ -204,6 +208,19 @@ app.get("/settings", checkLoggedIn, async (request, response) => {
   let userPosts = await postData.findUserPosts(user.username);
   response.render("pages/settings", { data: { user: user, posts: userPosts } });
 });
+
+app.post(
+  "/updateProfilePic",
+  upload.single("myImage"),
+  async (request, response) => {
+    console.log(request.file);
+    let filename;
+    if (request.file && request.file.filename) {
+      filename = "uploads/" + request.file.filename;
+    }
+    userData.updateProfilePic(request.session.username, filename);
+  }
+);
 
 // Add in feedback on frontend after update
 app.post("/updateBio", (request, response) => {
