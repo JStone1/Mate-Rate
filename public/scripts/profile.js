@@ -58,15 +58,14 @@ passwordBtn.addEventListener("click", async () => {
 // Add in delete profile below //
 
 // let deleteProfileBtn = document.getElementById("delete-profile-btn");
-// let confirmDeleteText = document.getElementById("confirm-delete-tex");
+// let confirmDeleteText = document.getElementById("confirm-delete-text");
 // console.log(newPassword);
 
 // deleteProfileBtn.addEventListener("click", async () => {
 //   let userInfo = {
-//     password: newPassword.value,
+//     username: confirmDeleteText.value,
 //   };
-//   newPassword.value = "";
-//   fetch("/updatePassword", {
+//   fetch("/deleteUser", {
 //     method: "POST",
 //     headers: {
 //       "Content-Type": "application/json",

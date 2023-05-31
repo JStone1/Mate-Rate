@@ -25,32 +25,13 @@
             <input type="text" id="new-password-text">
             <button id="update-password-btn">Confirm</button>
           </div>
-          <div class="update-container">
-            <label for="confirm-delete-text">Delete</label>
-            <input type="text" id="confirm-delete-text">
-            <button id="delete-profile-btn">Confirm</button>
-          </div>
-
+            <form action="/deleteUser" method="post">
+              <label for="delete-profile-btn">Delete account</label>
+              <input id="delete-profile-btn" type="submit" value="Delete" />
+            </form>
           <a href="/profile"><button>Done</button></a>
       </article>
-      <!-- 
-      <h2>My recent posts</h2>
-      <ul id="profile-posts">
-      <% data.posts.forEach(result => {%>
-        <li class="post">
-          <h2><strong><%=result.username%></strong></h2>
-          <p>Post Number: <%=result.postNumber%></p>
-          <p class="post-text"><%=result.postText%></p>
-            <img src="<%=result.imagePath%>" style="width: 100px;">
-          <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
-            <p>You cannot rate your own post</p>
-            <form action="/removePost" method="post">
-              <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
-              <input id="delete-post-button" type="submit" value="Delete Post" />
-            </form>        
-        </li>
-        <% }) %>
-      </ul> -->
+
     </main>
   </body>
   <script type="module" src="./scripts/utils.js"></script>

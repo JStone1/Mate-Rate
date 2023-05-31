@@ -123,6 +123,10 @@ async function updatePassword(username, password) {
   User.find({ username: username }).updateOne({ password: password }).exec();
 }
 
+async function deleteUser(userID) {
+  User.deleteOne({ _id: userID }).exec();
+}
+
 // exports all functions from model
 module.exports = {
   addNewUser,
@@ -135,4 +139,5 @@ module.exports = {
   updatePostScores,
   updateProfileScore,
   updatePassword,
+  deleteUser,
 };

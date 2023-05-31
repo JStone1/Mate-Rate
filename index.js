@@ -218,6 +218,14 @@ app.post("/updatePassword", (request, response) => {
   userData.updatePassword(request.session.username, request.body.password);
 });
 
+app.post("/deleteUser", async (request, response) => {
+  console.log("USER ID???", request.session.userID);
+  console.log(request.body.username);
+  response.render("pages/account-deleted");
+
+  await userData.deleteUser(request.session.userID);
+});
+
 app.post("/removePost", async (request, response) => {
   let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
   postData.removePost(post);
