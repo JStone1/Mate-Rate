@@ -199,11 +199,49 @@ header {
 
 // profile
 
-#profile-posts {
+#profile-container {
+  @include centerContent(column);
+  gap: 5em;
+}
+
+#profile-details {
+  @include centerContent(column);
+  h1 {
+    margin-bottom: 0;
+  }
+  h2 {
+    margin: 0;
+  }
+}
+
+#profile-options {
   @include centerContent(row);
+  gap: 3em;
+  div {
+    @include centerContent(column);
+    justify-content: space-between;
+    @include containerStyle(250px, 250px);
+    &:hover {
+      cursor: pointer;
+      animation: 1s hoverEffect forwards;
+    }
+    h2 {
+      margin: 0;
+      font-size: 2em;
+    }
+  }
+}
+
+#profile-posts {
+  display: flex;
+  overflow-x: auto;
   gap: 4rem;
-  li {
-    width: 500px;
+  width: 1350px;
+}
+
+@keyframes hoverEffect {
+  100% {
+    background-color: lightblue;
   }
 }
 

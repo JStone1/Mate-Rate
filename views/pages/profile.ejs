@@ -5,41 +5,60 @@
   </head>
   <body>
     <header>
-      <h1>Social Media App</h1>
+      <h1>Mate Rate</h1>
       <nav><%- include("../partials/nav") %></nav>
       <form action="/logout" method="post">
         <input id="logout-button" type="submit" value="Logout" />
       </form>
     </header>
-    <h1 class="main-page-title"><%=data.user.username%>'s profile</h1>
-      <h2>User score: <%=data.user.profileScore.toString().substring(0,3)%></h2>
-      <%if(!data.user.profileScore) {%>
-        <p>Gain a score by getting rates on your posts</p>
-        <%}%>
-    <p id="user-bio">Bio: <%=data.user.bio%></p>
-    <form action="/updateBio" method="post">
-      <input type="text" id="bio-text">
-      <input type="submit" value="Update Bio" id="update-bio-btn"></input>
-    </form>
-    <input type="text" id="new-password-text">
-    <button id="update-password-btn">Reset Password</button>
-    <h2>My recent posts</h2>
-    <ul id="profile-posts">
-    <% data.posts.forEach(result => {%>
-      <li class="post">
-        <h2><strong><%=result.username%></strong></h2>
-        <p>Post Number: <%=result.postNumber%></p>
-        <p class="post-text"><%=result.postText%></p>
-          <img src="<%=result.imagePath%>" style="width: 100px;">
-        <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
-          <p>You cannot rate your own post</p>
-          <form action="/removePost" method="post">
-            <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
-            <input id="delete-post-button" type="submit" value="Delete Post" />
-          </form>        
-      </li>
-      <% }) %>
-    </ul>
+    <main id="profile-container">
+      <section id="profile-details">
+        <h1 class="main-page-title"><%=data.user.username%>'s profile</h1>
+        <h2>User score: <%=data.user.profileScore.toString().substring(0,3)%></h2>
+        <p style="text-align: center;" id="user-bio"><%=data.user.bio%></p>
+      </section>
+      <article >
+        <%if(!data.user.profileScore) {%>
+          <p>Gain a score by getting rates on your posts</p>
+          <%}%>
+          <section id="profile-options">
+            <div>
+              <h2>Post</h2>
+              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+              <p>Post something for others to see</p>
+            </div>
+            <div>
+              <h2>Rate</h2>
+              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+              <p>View other's posts and rate them</p>
+            </div>
+            <div>
+              <h2>Settings</h2>
+              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+              <p>Update your profile</p>
+            </div>
+          </section>
+      </article>
+      <section>
+        <h2>My recent posts</h2>
+        <ul id="profile-posts">
+        <% data.posts.forEach(result => {%>
+          <li class="post">
+            <h2><strong><%=result.username%></strong></h2>
+            <p>Post Number: <%=result.postNumber%></p>
+            <p class="post-text"><%=result.postText%></p>
+              <img src="<%=result.imagePath%>" style="width: 100px;">
+            <p>Time posted: <%=result.createdAt.toString().substring(4,21)%></p>
+              <p>You cannot rate your own post</p>
+              <form action="/removePost" method="post">
+                <input type="hidden" id="postNum" name="postNum" value="<%=result.postNumber%>" >
+                <input id="delete-post-button" type="submit" value="Delete Post" />
+              </form>        
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+    </main>
   </body>
   <script type="module" src="./scripts/utils.js"></script>
   <script type="module" src="./scripts/posts.js"></script>
