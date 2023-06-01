@@ -86,6 +86,10 @@ nav {
 .icon {
   width: 40px;
   color: $accent-colour;
+  transition: 0.1s;
+  &:hover {
+    color: $secondary-colour;
+  }
 }
 
 .page-nav {
@@ -318,9 +322,6 @@ nav {
 .large-icon {
   width: 120px;
   color: $primary-colour;
-  &:hover {
-    animation: 0.2s hoverEffect forwards;
-  }
 }
 
 #profile-posts {
@@ -331,6 +332,9 @@ nav {
   margin-bottom: 100px;
 }
 
+#profile-posts-section {
+  font-size: 24px;
+}
 // settings
 
 #settings-section {

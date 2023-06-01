@@ -98,7 +98,10 @@ nav {
 
 .icon {
   width: 40px;
-  color: #e5e5e5; }
+  color: #e5e5e5;
+  transition: 0.1s; }
+  .icon:hover {
+    color: #fca311; }
 
 .page-nav {
   display: flex;
@@ -370,8 +373,6 @@ nav {
 .large-icon {
   width: 120px;
   color: #14213d; }
-  .large-icon:hover {
-    animation: 0.2s hoverEffect forwards; }
 
 #profile-posts {
   display: flex;
@@ -379,6 +380,9 @@ nav {
   gap: 4rem;
   width: 1500px;
   margin-bottom: 100px; }
+
+#profile-posts-section {
+  font-size: 24px; }
 
 #settings-section {
   display: flex;

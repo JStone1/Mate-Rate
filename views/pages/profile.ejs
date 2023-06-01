@@ -13,7 +13,7 @@
         <h2 id="profile-score">User score: <span id="score"><%=data.user.profileScore.toString().substring(0,3)%></span></h2>
         <p id="bio" style="text-align: center;" id="user-bio"><%=data.user.bio%></p>
       </section>
-      <section>
+      <section id="profile-posts-section">
         <h2>My recent posts</h2>
         <ul id="profile-posts">
         <% data.posts.forEach(result => {%>
