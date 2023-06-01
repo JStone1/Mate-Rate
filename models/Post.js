@@ -42,7 +42,7 @@ async function addNewPost(username, post, imageFile, profilePic) {
   // newPostNumber++;
 }
 
-async function getPosts(n = 5) {
+async function getPosts(n = 20) {
   let data = [];
   await Post.find({ archived: false })
     .sort({ createdAt: -1 })

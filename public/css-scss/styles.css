@@ -295,6 +295,7 @@ nav {
     align-self: start; }
   #post-details img {
     max-width: 300px;
+    max-height: 250px;
     border-radius: 10px; }
 
 .post-text {
