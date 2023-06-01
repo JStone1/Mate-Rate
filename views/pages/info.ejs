@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+  </head>
+  <body>
+    <header>
+      <nav><%- include("../partials/logged-in-nav") %></nav>
+    </header>
+    <main id="profile-container">
+      <section id="profile-details">
+        <h1 class="main-page-title">Info</h1>
+      </section>
+          <section id="profile-options">
+            <div>
+              <h2>Post</h2>
+              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+              <p>Post something for others to see</p>
+            </div>
+            <div>
+              <h2>Rate</h2>
+              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+              <p>View other's posts and rate them</p>
+            </div>
+            <div>
+              <h2>Settings</h2>
+              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
+              <p>Update your profile</p>
+            </div>
+          </section>
+    </main>
+  </body>
+  <script type="module" src="./scripts/utils.js"></script>
+  <script type="module" src="./scripts/posts.js"></script>
+  <script type="module" src="./scripts/profile.js"></script>
+</html>

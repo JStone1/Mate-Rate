@@ -73,7 +73,7 @@ app.post("/login", async (request, response) => {
       request.session.userID = loggedInUser._id;
       request.session.username = user.username;
       userData.setLoggedIn(user.username, true);
-      response.render("pages/new-post");
+      response.render("pages/info");
     } else {
       response.render("pages/login");
     }
@@ -145,10 +145,9 @@ app.get("/view-posts", checkLoggedIn, async (request, response) => {
   });
 });
 
-// app.post("/newPost", (request, response) => {
-//   console.log("Data sent from model:", request.body);
-//   postData.addNewPost(request.session.username, request.body);
-// });
+app.get("/info", async (request, response) => {
+  response.render("pages/info");
+});
 
 app.get("/new-post", async (request, response) => {
   response.render("pages/new-post");

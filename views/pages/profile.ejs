@@ -5,7 +5,6 @@
   </head>
   <body>
     <header>
-      <img id="logo" src="images/logo2.png">
       <nav><%- include("../partials/logged-in-nav") %></nav>
     </header>
     <main id="profile-container">
@@ -14,28 +13,6 @@
         <h2>User score: <%=data.user.profileScore.toString().substring(0,3)%></h2>
         <p style="text-align: center;" id="user-bio"><%=data.user.bio%></p>
       </section>
-      <article >
-        <%if(!data.user.profileScore) {%>
-          <p>Gain a score by getting rates on your posts</p>
-          <%}%>
-          <section id="profile-options">
-            <div>
-              <h2>Post</h2>
-              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
-              <p>Post something for others to see</p>
-            </div>
-            <div>
-              <h2>Rate</h2>
-              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
-              <p>View other's posts and rate them</p>
-            </div>
-            <div>
-              <h2>Settings</h2>
-              <div style="background-color: gray; width: 50px; height: 50px; border-radius: 50%;">.</div>
-              <p>Update your profile</p>
-            </div>
-          </section>
-      </article>
       <section>
         <h2>My recent posts</h2>
         <ul id="profile-posts">
