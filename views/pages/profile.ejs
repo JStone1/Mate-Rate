@@ -9,9 +9,17 @@
     </header>
     <main id="profile-container">
       <section id="profile-details">
-        <h1 class="main-page-title"><%=data.user.username%>'s profile</h1>
+        <div id="profile-heading">
+          <img class="profile-pic" 
+          <%if(data.user.profilePicture) {%>
+            src="<%=data.user.profilePicture%>"
+            <%}%>
+          />
+          <h1 class="main-page-title"><%=data.user.username%>'s profile</h1>
+        </div>
         <h2 id="profile-score">User score: <span id="score"><%=data.user.profileScore.toString().substring(0,3)%></span></h2>
         <p id="bio" style="text-align: center;" id="user-bio"><%=data.user.bio%></p>
+        <a href="/settings"><button>Edit profile</button></a>
       </section>
       <section id="profile-posts-section">
         <h2>My recent posts</h2>

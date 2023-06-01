@@ -92,6 +92,14 @@ nav {
   }
 }
 
+#logout-button {
+  svg {
+    &:hover {
+      color: $secondary-colour;
+    }
+  }
+}
+
 .page-nav {
   @include horizontalList(15px);
   color: white;
@@ -259,6 +267,19 @@ nav {
   @include centerContent(column);
   h1 {
     margin-bottom: 0;
+  }
+}
+
+#profile-heading {
+  @include centerContent(row);
+  gap: 2em;
+  margin-top: 30px;
+  h1 {
+    margin: 0;
+  }
+  img {
+    width: 100px;
+    height: 100px;
   }
 }
 

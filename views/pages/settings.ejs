@@ -13,7 +13,7 @@
         <!-- <p id="user-bio">Bio: <%=data.user.bio%></p> -->
         <div id="profilepic-container" class="update-container">
           <form action="/updateProfilePic" enctype="multipart/form-data" method="post">
-            <img style="width: 50px; height: 50px; border-radius: 50%;" 
+            <img class="profile-pic" 
             <%if(data.user.profilePicture) {%>
               src="<%=data.user.profilePicture%>"
               <%}%>
