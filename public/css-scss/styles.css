@@ -19,8 +19,7 @@ h3 {
 
 a {
   color: #14213d;
-  font-weight: 300;
-  font-size: 22px; }
+  text-decoration: none; }
 
 button {
   border-radius: 10px;
@@ -98,7 +97,8 @@ nav {
   border-radius: 10px; }
 
 .icon {
-  width: 40px; }
+  width: 40px;
+  color: #e5e5e5; }
 
 .page-nav {
   display: flex;
@@ -127,6 +127,10 @@ nav {
   .main-page-container h2 {
     text-align: center;
     font-size: 2.5rem; }
+
+.signup-text {
+  text-decoration: underline;
+  font-weight: 300; }
 
 #info-section {
   display: flex;
@@ -314,13 +318,13 @@ nav {
   height: 75px;
   border-radius: 50%; }
 
-#profile-options {
+#info-options {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 3em; }
-  #profile-options div {
+  #info-options div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -333,12 +337,27 @@ nav {
     padding: 20px;
     width: 250px;
     height: 250px; }
-    #profile-options div:hover {
+    #info-options div:hover {
       cursor: pointer;
-      animation: 1s hoverEffect forwards; }
-    #profile-options div h2 {
+      animation: 0.2s hoverEffect forwards; }
+      #info-options div:hover svg {
+        color: #e5e5e5; }
+    #info-options div h2 {
       margin: 0;
       font-size: 2em; }
+    #info-options div a {
+      text-decoration: none;
+      font-weight: 400; }
+
+@keyframes hoverEffect {
+  100% {
+    color: #e5e5e5;
+    background-color: #2d4883; } }
+.large-icon {
+  width: 120px;
+  color: #14213d; }
+  .large-icon:hover {
+    animation: 0.2s hoverEffect forwards; }
 
 #profile-posts {
   display: flex;
@@ -347,9 +366,6 @@ nav {
   width: 1500px;
   margin-bottom: 100px; }
 
-@keyframes hoverEffect {
-  100% {
-    background-color: lightblue; } }
 #settings-section {
   display: flex;
   flex-direction: column;

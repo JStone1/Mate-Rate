@@ -26,8 +26,7 @@ h3 {
 a {
   color: $primary-colour;
   // font-style: italic;
-  font-weight: 300;
-  font-size: 22px;
+  text-decoration: none;
 }
 
 button {
@@ -86,6 +85,7 @@ nav {
 
 .icon {
   width: 40px;
+  color: $accent-colour;
 }
 
 .page-nav {
@@ -107,6 +107,11 @@ nav {
     text-align: center;
     font-size: 2.5rem;
   }
+}
+
+.signup-text {
+  text-decoration: underline;
+  font-weight: 300;
 }
 
 // info
@@ -262,7 +267,7 @@ nav {
   border-radius: 50%;
 }
 
-#profile-options {
+#info-options {
   @include centerContent(row);
   gap: 3em;
   div {
@@ -271,12 +276,34 @@ nav {
     @include containerStyle(250px, 250px);
     &:hover {
       cursor: pointer;
-      animation: 1s hoverEffect forwards;
+      animation: 0.2s hoverEffect forwards;
+      svg {
+        color: $accent-colour;
+      }
     }
     h2 {
       margin: 0;
       font-size: 2em;
     }
+    a {
+      text-decoration: none;
+      font-weight: 400;
+    }
+  }
+}
+
+@keyframes hoverEffect {
+  100% {
+    color: $accent-colour;
+    background-color: #2d4883;
+  }
+}
+
+.large-icon {
+  width: 120px;
+  color: $primary-colour;
+  &:hover {
+    animation: 0.2s hoverEffect forwards;
   }
 }
 
@@ -286,12 +313,6 @@ nav {
   gap: 4rem;
   width: 1500px;
   margin-bottom: 100px;
-}
-
-@keyframes hoverEffect {
-  100% {
-    background-color: lightblue;
-  }
 }
 
 // settings
