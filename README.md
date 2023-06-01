@@ -1,4 +1,4 @@
-# Mate Rate ⭐:
+# Mate Rate ⭐
 
 My social media concept will allow people to rate eachother’s posts and profiles using a scoring system similar to popular review sites such as TripAdvisor. User’s will be allowed to post text, images and videos onto the social media feed (like many mainstream platforms), however other users will then be able to rate the post on a scale of 1-5 stars, giving that post its own score.
 
