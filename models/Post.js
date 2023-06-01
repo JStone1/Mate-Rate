@@ -22,6 +22,8 @@ const Post = model("Post", postSchema);
 
 let date = Date().substring(4, 21);
 
+/* Taken and expanded from class example */
+// adds new post to Post collection in database
 async function addNewPost(username, post, imageFile, profilePic) {
   let newPostNumber = await Post.countDocuments({}); // gets the amount of documents in the Post collection
   console.log("Number of docs in Posts: ", newPostNumber);
@@ -39,9 +41,10 @@ async function addNewPost(username, post, imageFile, profilePic) {
   Post.create(newPost).catch((error) => {
     console.log("Error: ", error);
   });
-  // newPostNumber++;
 }
 
+/* Taken from class example */
+// retrieves all posts to display in feed
 async function getPosts(n = 20) {
   let data = [];
   await Post.find({ archived: false })
@@ -57,6 +60,7 @@ async function getPosts(n = 20) {
   return data;
 }
 
+// retrieves a singular post
 async function getOnePost(postNum) {
   let post;
   await Post.find({ postNumber: postNum })
@@ -71,6 +75,7 @@ async function getOnePost(postNum) {
   return post;
 }
 
+// adds who rated post to array and amount it was rated - avoids same person rating post twice
 async function ratePost(postNum, rating, userId) {
   let post = await Post.find({ postNumber: postNum })
     .updateOne({ postScore: rating })
@@ -81,17 +86,20 @@ async function ratePost(postNum, rating, userId) {
   return post;
 }
 
+// retrieves posts specific to a user
 async function findUserPosts(user) {
   let posts = await Post.find({ username: user, archived: false }).exec();
   return posts;
 }
 
+// "removes" post by toggling archive bool - this deletes post from view but keeps in database to preserve unique post numbers
 async function removePost(postNum) {
   await Post.find({ postNumber: postNum }).updateOne({
     archived: true,
   });
 }
 
+// exports all functions from model
 module.exports = {
   addNewPost,
   getPosts,

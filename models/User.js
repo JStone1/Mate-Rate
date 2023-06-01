@@ -14,7 +14,8 @@ const userSchema = new Schema({
 
 const User = model("User", userSchema);
 
-// creates new user based on data typed in by user
+/* Taken and expanded from class example */
+// creates and adds new user based on data typed in by user and predefined schema data
 async function addNewUser(username, password) {
   const user = {
     username: username,
@@ -30,6 +31,7 @@ async function addNewUser(username, password) {
   });
 }
 
+/* Taken from class example */
 // returns all users from database
 async function getUsers() {
   let userData = [];
@@ -45,6 +47,7 @@ async function getUsers() {
   return userData;
 }
 
+/* Taken from class example */
 // finds specific user from database
 async function findUser(username) {
   let user = "";
@@ -76,6 +79,7 @@ async function checkPassword(username, password) {
   return false;
 }
 
+/* Taken from class example */
 // sets the user to be logged in after loggin in
 async function setLoggedIn(username, loginState) {
   let user = findUser(username);
@@ -84,6 +88,7 @@ async function setLoggedIn(username, loginState) {
   }
 }
 
+/* Taken from class example */
 // checks the login state of user
 async function checkLoggedIn(username) {
   let user = findUser(username);
@@ -93,19 +98,20 @@ async function checkLoggedIn(username) {
   return false;
 }
 
+// updates user bio field
 async function updateBio(user, bio) {
   User.find({ username: user }).updateOne({ bio: bio }).exec();
 }
 
+// adds post rating to an array that effects the user's profile score
 async function updatePostScores(username, postScore) {
   await User.updateOne(
     { username: username },
     { $push: { postScores: postScore } }
   ).exec();
-
-  // console.log(User.find({ postScores }));
 }
 
+// calculates the average of user's post score and updates their profile score accordingly
 async function updateProfileScore(username, score) {
   console.log("HERE:", score);
   total = 0;
@@ -120,26 +126,22 @@ async function updateProfileScore(username, score) {
     .exec();
 }
 
+// updates user password
 async function updatePassword(username, password) {
   User.find({ username: username }).updateOne({ password: password }).exec();
 }
 
+// deletes user account from database
 async function deleteUser(userID) {
   User.deleteOne({ _id: userID }).exec();
 }
 
+// changes profile pic based on image file sent through from server
 async function updateProfilePic(username, imageFile) {
   User.find({ username: username })
     .updateOne({ profilePicture: imageFile })
     .exec();
 }
-
-// async function getProfilePic(username) {
-//   let profilePic = "";
-//   let user = await User.find({ username: username }).exec();
-//   console.log("RETRIEVED USER", user);
-//   return user
-// }
 
 // exports all functions from model
 module.exports = {

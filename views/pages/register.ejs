@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="./css-scss/normalize.css" rel="stylesheet" />
-    <link href="./css-scss/styles.css" rel="stylesheet" />
+    <%- include("../partials/head") %>
   </head>
   <body>
     <header>
@@ -20,7 +15,7 @@
           <label for="register-username">Username</label>
           <input type="text" id="register-username" name="username" />
           <label for="register-password">Password</label>
-          <input type="text" id="resgister-password" name="password" />
+          <input type="password" id="resgister-password" name="password" />
           <input type="submit" value="Register" />
         </form>
         <p>Already have an account? <a class="signup-text" href="/login">Login here!</a></p>

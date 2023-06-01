@@ -54,6 +54,9 @@ header {
   color: white;
   width: 100%;
   padding: 30px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav {
@@ -101,7 +104,7 @@ nav {
 }
 
 .page-nav {
-  @include horizontalList(15px);
+  @include horizontalList(20px);
   color: white;
 }
 
@@ -126,14 +129,14 @@ nav {
   font-weight: 300;
 }
 
-// info
+// landing info
 
-#info-section {
+#landing-info-section {
   @include centerContent(column);
   @include containerStyle(400px, 400px);
   margin-bottom: 100px;
   li {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   li::before {
     margin-right: 10px;
@@ -254,7 +257,6 @@ nav {
 .post-text {
   border: 1px solid black;
   border-radius: 10px;
-  // min-height: 20px;
   width: 600px;
   max-height: 40px;
   padding: 15px;
@@ -316,6 +318,20 @@ nav {
   border-radius: 50%;
 }
 
+#profile-posts {
+  display: flex;
+  overflow-x: auto;
+  gap: 4rem;
+  width: 1500px;
+  margin-bottom: 100px;
+}
+
+#profile-posts-section {
+  font-size: 24px;
+}
+
+// info page
+
 #info-options {
   @include centerContent(row);
   gap: 3em;
@@ -353,17 +369,6 @@ nav {
   color: $primary-colour;
 }
 
-#profile-posts {
-  display: flex;
-  overflow-x: auto;
-  gap: 4rem;
-  width: 1500px;
-  margin-bottom: 100px;
-}
-
-#profile-posts-section {
-  font-size: 24px;
-}
 // settings
 
 #settings-section {
@@ -422,7 +427,7 @@ nav {
   }
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////
+/* Code found online at: https://codepen.io/hesguru/pen/BaybqXv */
 .rate {
   float: left;
   height: 46px;

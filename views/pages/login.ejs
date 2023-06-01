@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link href="./css-scss/normalize.css" rel="stylesheet" />
-    <link href="./css-scss/styles.css" rel="stylesheet" />
+    <%- include("../partials/head") %>
   </head>
   <body>
     <header>
       <nav id="logged-out-nav"><%- include("../partials/logged-out-nav") %></nav>
-    </header>>
+    </header>
     <h1 class="main-page-title">Welcome to Mate Rate!</h1>
     <main class="main-page-container">
-      <article id="info-section">
+      <article id="landing-info-section">
         <h2>What is it?</h2>
         <ul>
           <li>Rate your friend's posts using a five star rating system.</li>

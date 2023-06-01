@@ -11,14 +11,12 @@ app.use(express.json()); // method in express that recognises the incoming reque
 
 app.use(express.urlencoded({ extended: false })); // method in express that recognises the incoming request Object as strings or arrays
 
-const path = require("path");
-
-const multer = require("multer");
+const multer = require("multer"); // handles file uploads for multipart form data
 
 const upload = multer({ dest: "./public/uploads" });
 
 require("dotenv").config();
-const mongoPassword = process.env.MYMONGOPASSWORD;
+const mongoPassword = process.env.MYMONGOPASSWORD; // mongo password stored in a secret .env file
 
 const sessions = require("express-session"); // access to express sessions
 
@@ -50,18 +48,22 @@ mongoose.connect(
   `mongodb+srv://JStone1:${mongoPassword}@cluster0.jxho5pt.mongodb.net/MyApp`
 );
 
+// default controller for app
 app.get("/", (request, response) => {
   response.render("pages/login");
 });
 
+// controller for register page
 app.get("/register", (request, response) => {
   response.render("pages/register");
 });
 
+// controller for login page
 app.get("/login", (request, response) => {
   response.render("pages/login");
 });
 
+/* Taken and expanded from class example */
 // controller for user login
 app.post("/login", async (request, response) => {
   let user = request.body;
@@ -82,6 +84,7 @@ app.post("/login", async (request, response) => {
   }
 });
 
+/* Taken from class example */
 // controller for logging out
 app.post("/logout", (request, response) => {
   userData.setLoggedIn(request.session.username, false);
@@ -95,17 +98,20 @@ app.post("/register", async (request, response) => {
   console.log(request.body);
   let user = request.body;
   if (await userData.findUser(user.username)) {
+    // if user enters username that is already in database
     response.json({
       status: "failed",
       error: "User already exists",
     });
   } else {
+    // ads user to database if doesn't already exist
     userData.addNewUser(user.username, user.password);
     console.log("New user added");
     response.render("pages/login");
   }
 });
 
+/* Taken from class example */
 //test that user is logged in with a valid session
 function checkLoggedIn(request, response, nextAction) {
   if (request.session) {
@@ -138,6 +144,7 @@ app.get("/view-posts", checkLoggedIn, async (request, response) => {
   console.log(request.session);
   response.render("pages/view-posts", {
     data: {
+      // gives access to data from backend in the ejs page
       posts: posts,
       user: user,
       userID: request.session.userID,
@@ -146,10 +153,12 @@ app.get("/view-posts", checkLoggedIn, async (request, response) => {
   });
 });
 
+// controller for info page
 app.get("/info", async (request, response) => {
   response.render("pages/info");
 });
 
+/* Taken and expanded from class example */
 // controller for adding a new post
 app.post("/newPost", upload.single("myImage"), async (request, response) => {
   console.log(request.file);
@@ -161,6 +170,7 @@ app.post("/newPost", upload.single("myImage"), async (request, response) => {
   console.log("FILENAME: ", fileName);
   let user = await userData.findUser(request.session.username);
   await postData.addNewPost(
+    // sends data for post image and profile picture to access from view post
     request.session.username,
     request.body,
     fileName,
@@ -178,6 +188,7 @@ app.get("/getPosts", async (request, response) => {
   });
 });
 
+// controller for when a user rates a post - retrieves value of rating and sends it to User model to add to the rating array that effects their profile score
 app.post("/updateScore", async (request, response) => {
   let posts = await postData.getPosts();
   // converts js object to string then, access specific position in string, then convert it back to an int
@@ -199,6 +210,7 @@ app.post("/updateScore", async (request, response) => {
   response.send(console.log("Score updated"));
 });
 
+// controller for profile button, user must be logged in
 app.get("/profile", checkLoggedIn, async (request, response) => {
   console.log("Current user: ", request.session.username);
   let user = await userData.findUser(request.session.username);
@@ -206,6 +218,7 @@ app.get("/profile", checkLoggedIn, async (request, response) => {
   response.render("pages/profile", { data: { user: user, posts: userPosts } });
 });
 
+// controller for settings button, user must be logged in
 app.get("/settings", checkLoggedIn, async (request, response) => {
   console.log("Current user: ", request.session.username);
   let user = await userData.findUser(request.session.username);
@@ -213,6 +226,7 @@ app.get("/settings", checkLoggedIn, async (request, response) => {
   response.render("pages/settings", { data: { user: user, posts: userPosts } });
 });
 
+// controller for updating profile picture, sends filename to user model to update the picture in their posts
 app.post(
   "/updateProfilePic",
   upload.single("myImage"),
@@ -239,14 +253,14 @@ app.post("/updatePassword", (request, response) => {
   userData.updatePassword(request.session.username, request.body.password);
 });
 
+// controller for deleting user from database
 app.post("/deleteUser", async (request, response) => {
-  console.log("USER ID???", request.session.userID);
   console.log(request.body.username);
   response.render("pages/account-deleted");
-
   await userData.deleteUser(request.session.userID);
 });
 
+// controller for archiving user post
 app.post("/removePost", async (request, response) => {
   let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
   postData.removePost(post);

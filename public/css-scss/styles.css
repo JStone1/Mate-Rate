@@ -71,7 +71,10 @@ header {
   background-color: #14213d;
   color: white;
   width: 100%;
-  padding: 30px 0px; }
+  padding: 30px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 10; }
 
 nav {
   display: flex;
@@ -113,7 +116,7 @@ nav {
   align-items: center;
   color: white; }
   .page-nav li {
-    margin: 0px 15px;
+    margin: 0px 20px;
     cursor: pointer; }
     .page-nav li:hover {
       text-decoration: underline; }
@@ -138,7 +141,7 @@ nav {
   text-decoration: underline;
   font-weight: 300; }
 
-#info-section {
+#landing-info-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -151,12 +154,12 @@ nav {
   width: 400px;
   height: 400px;
   margin-bottom: 100px; }
-  #info-section li {
-    font-size: 1rem; }
-  #info-section li::before {
+  #landing-info-section li {
+    font-size: 1.3rem; }
+  #landing-info-section li::before {
     margin-right: 10px;
     content: "\02B50"; }
-  #info-section li:not(:first-child) {
+  #landing-info-section li:not(:first-child) {
     margin: 40px 0px; }
 
 #login-section {
@@ -358,6 +361,16 @@ nav {
   height: 75px;
   border-radius: 50%; }
 
+#profile-posts {
+  display: flex;
+  overflow-x: auto;
+  gap: 4rem;
+  width: 1500px;
+  margin-bottom: 100px; }
+
+#profile-posts-section {
+  font-size: 24px; }
+
 #info-options {
   display: flex;
   flex-direction: row;
@@ -396,16 +409,6 @@ nav {
 .large-icon {
   width: 120px;
   color: #14213d; }
-
-#profile-posts {
-  display: flex;
-  overflow-x: auto;
-  gap: 4rem;
-  width: 1500px;
-  margin-bottom: 100px; }
-
-#profile-posts-section {
-  font-size: 24px; }
 
 #settings-section {
   display: flex;
@@ -490,6 +493,7 @@ nav {
   #delete-profile-btn:hover {
     background-color: #920000; }
 
+/* Code found online at: https://codepen.io/hesguru/pen/BaybqXv */
 .rate {
   float: left;
   height: 46px;

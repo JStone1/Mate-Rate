@@ -1,5 +1,8 @@
+// useful mixins to use in main scss file
+
 @import "./variables.scss";
 
+// makes parent a flex container and centers content in either row or column
 @mixin centerContent($direction) {
   display: flex;
   flex-direction: $direction;
@@ -7,6 +10,7 @@
   align-items: center;
 }
 
+// handles styling for list items
 @mixin horizontalList($sideMargin) {
   @include centerContent(row);
   li {
@@ -29,19 +33,7 @@
   }
 }
 
-// @mixin buttonStyle($width, $height, $padding, $font-size) {
-//   @include centerContent(column);
-//   background-color: $accent-colour;
-//   box-shadow: 4px 2px 18px 0px $black inset;
-//   border-radius: 10px;
-//   color: black;
-//   width: $width;
-//   height: $height;
-//   padding: $padding;
-//   font-size: $font-size;
-//   font-weight: 700;
-// }
-
+// styling for the buttons
 @mixin buttonStyle($width, $height, $padding, $font-size) {
   border-radius: 10px;
   box-shadow: 0px 2px 0px #000000;
@@ -60,14 +52,13 @@
   }
 }
 
+// styling for main containers
 @mixin containerStyle($width, $height) {
   background-color: $accent-colour;
   box-shadow: 4px 2px 10px 0px $primary-colour;
   border: $primary-colour 4px solid;
   border-radius: 10px;
   padding: 20px;
-  // min-height: 400px;
-  // min-width: 300px;
   width: $width;
   height: $height;
 }
