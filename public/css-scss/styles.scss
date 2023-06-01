@@ -256,9 +256,25 @@ nav {
   h1 {
     margin-bottom: 0;
   }
-  h2 {
-    margin: 0;
-  }
+}
+
+#profile-score {
+  font-size: 48px;
+  margin: 50px 0px;
+}
+
+#score {
+  color: $secondary-colour;
+}
+
+#bio {
+  font-size: 32px;
+  font-style: italic;
+  border: $primary-colour 4px solid;
+  border-radius: 10px;
+  width: 700px;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .profile-pic {

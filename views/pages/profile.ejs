@@ -10,8 +10,8 @@
     <main id="profile-container">
       <section id="profile-details">
         <h1 class="main-page-title"><%=data.user.username%>'s profile</h1>
-        <h2>User score: <%=data.user.profileScore.toString().substring(0,3)%></h2>
-        <p style="text-align: center;" id="user-bio"><%=data.user.bio%></p>
+        <h2 id="profile-score">User score: <span id="score"><%=data.user.profileScore.toString().substring(0,3)%></span></h2>
+        <p id="bio" style="text-align: center;" id="user-bio"><%=data.user.bio%></p>
       </section>
       <section>
         <h2>My recent posts</h2>
@@ -22,7 +22,7 @@
           <li class="post">
             <div class="user-details">
               <div>
-                <img style="width: 75px; height: 75px; border-radius: 50%;" 
+                <img class="profile-pic" 
                 <%if(data.user.profilePicture) {%>
                   src="<%=data.user.profilePicture%>"
                   <%}%>

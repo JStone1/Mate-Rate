@@ -310,8 +310,22 @@ nav {
   align-items: center; }
   #profile-details h1 {
     margin-bottom: 0; }
-  #profile-details h2 {
-    margin: 0; }
+
+#profile-score {
+  font-size: 48px;
+  margin: 50px 0px; }
+
+#score {
+  color: #fca311; }
+
+#bio {
+  font-size: 32px;
+  font-style: italic;
+  border: #14213d 4px solid;
+  border-radius: 10px;
+  width: 700px;
+  padding: 10px;
+  overflow: hidden; }
 
 .profile-pic {
   width: 75px;
