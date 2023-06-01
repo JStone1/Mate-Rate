@@ -133,6 +133,13 @@ async function updateProfilePic(username, imageFile) {
     .exec();
 }
 
+// async function getProfilePic(username) {
+//   let profilePic = "";
+//   let user = await User.find({ username: username }).exec();
+//   console.log("RETRIEVED USER", user);
+//   return user
+// }
+
 // exports all functions from model
 module.exports = {
   addNewUser,

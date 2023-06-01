@@ -18,14 +18,14 @@
           <div class="user-details">
             <div>
               <%if(!ownPost) {%>
-                <% profilePicSrc = "uploads/8d05cd9d541ef737401d3ed36f96bd83" %>
+                <% profilePicSrc = result.profilePic   %>
                 <%}%>
               <img class="profile-pic" 
                 src=<%=profilePicSrc%>
               />              
               <h2><%=result.username%></h2>  
             </div>
-            <p>User score: 3.6</p>
+            <p><%=result.profileScore%></p>
           </div>
           <!-- <p>Post Number: <%=result.postNumber%></p> -->
           <div id="post-details">

@@ -149,10 +149,6 @@ app.get("/info", async (request, response) => {
   response.render("pages/info");
 });
 
-app.get("/new-post", async (request, response) => {
-  response.render("pages/new-post");
-});
-
 // controller for adding a new post
 app.post("/newPost", upload.single("myImage"), async (request, response) => {
   console.log(request.file);
@@ -162,7 +158,13 @@ app.post("/newPost", upload.single("myImage"), async (request, response) => {
     fileName = "uploads/" + request.file.filename;
   }
   console.log("FILENAME: ", fileName);
-  await postData.addNewPost(request.session.username, request.body, fileName);
+  let user = await userData.findUser(request.session.username);
+  await postData.addNewPost(
+    request.session.username,
+    request.body,
+    fileName,
+    user.profilePicture
+  );
   console.log("body: ", request.body);
   console.log("Posts: ", posts);
   response.render("pages/post-success");

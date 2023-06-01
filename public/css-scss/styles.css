@@ -279,6 +279,9 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 1em; }
+  .user-details p {
+    font-weight: 700;
+    font-style: italic; }
 
 #post-details {
   display: flex;
