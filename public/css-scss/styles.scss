@@ -54,6 +54,16 @@ header {
   background-color: $primary-colour;
   color: white;
   width: 100%;
+  padding: 30px 0px;
+}
+
+#logo {
+  width: 250px;
+  border-radius: 10px;
+}
+
+.icon {
+  width: 40px;
 }
 
 .page-nav {
@@ -82,6 +92,7 @@ header {
 #info-section {
   @include centerContent(column);
   @include containerStyle(400px, 400px);
+  margin-bottom: 100px;
   li {
     font-size: 1rem;
   }
@@ -99,6 +110,7 @@ header {
 #login-section {
   @include centerContent(column);
   @include containerStyle(400px, 400px);
+  margin-bottom: 100px;
   p {
     text-align: center;
   }
@@ -109,6 +121,7 @@ header {
 #register-section {
   @include centerContent(column);
   @include containerStyle(400px, 400px);
+  margin-bottom: 100px;
   p {
     text-align: center;
   }
@@ -119,6 +132,7 @@ header {
 #new-post-section {
   @include centerContent(column);
   @include containerStyle(700px, 400px);
+  margin-bottom: 100px;
   padding: 0;
   justify-content: space-around;
   form {
@@ -137,7 +151,7 @@ header {
 // post success
 
 #post-success-section {
-  @include centerContent(column);
+  @include centerContent(row);
   gap: 5em;
   button {
     @include buttonStyle(300px, 150px, 50px, 2rem);
@@ -218,6 +232,12 @@ header {
   h2 {
     margin: 0;
   }
+}
+
+.profile-pic {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
 }
 
 #profile-options {

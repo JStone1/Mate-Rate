@@ -71,7 +71,15 @@ header {
   align-items: center;
   background-color: #14213d;
   color: white;
-  width: 100%; }
+  width: 100%;
+  padding: 30px 0px; }
+
+#logo {
+  width: 250px;
+  border-radius: 10px; }
+
+.icon {
+  width: 40px; }
 
 .page-nav {
   display: flex;
@@ -112,7 +120,8 @@ header {
   border-radius: 10px;
   padding: 20px;
   width: 400px;
-  height: 400px; }
+  height: 400px;
+  margin-bottom: 100px; }
   #info-section li {
     font-size: 1rem; }
   #info-section li::before {
@@ -132,7 +141,8 @@ header {
   border-radius: 10px;
   padding: 20px;
   width: 400px;
-  height: 400px; }
+  height: 400px;
+  margin-bottom: 100px; }
   #login-section p {
     text-align: center; }
 
@@ -147,7 +157,8 @@ header {
   border-radius: 10px;
   padding: 20px;
   width: 400px;
-  height: 400px; }
+  height: 400px;
+  margin-bottom: 100px; }
   #register-section p {
     text-align: center; }
 
@@ -163,6 +174,7 @@ header {
   padding: 20px;
   width: 700px;
   height: 400px;
+  margin-bottom: 100px;
   padding: 0;
   justify-content: space-around; }
   #new-post-section form {
@@ -176,7 +188,7 @@ header {
 
 #post-success-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 5em;
@@ -277,6 +289,11 @@ header {
     margin-bottom: 0; }
   #profile-details h2 {
     margin: 0; }
+
+.profile-pic {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%; }
 
 #profile-options {
   display: flex;

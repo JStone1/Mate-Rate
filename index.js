@@ -87,7 +87,7 @@ app.post("/logout", (request, response) => {
   userData.setLoggedIn(request.session.username, false);
   request.session.destroy();
   console.log("Logged out");
-  response.render("pages/login");
+  response.render("pages/logged-out");
 });
 
 // controller for user registration
