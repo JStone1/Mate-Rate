@@ -177,8 +177,11 @@ nav {
   form {
     align-items: start;
     gap: 0.6em;
-    div {
+    img,
+    div,
+    h2 {
       align-self: center;
+      margin: 0;
     }
   }
 }

@@ -20,6 +20,7 @@ async function addNewUser(username, password) {
     username: username,
     password: password,
     loggedin: false,
+    profilePicture: "uploads/8d05cd9d541ef737401d3ed36f96bd83",
     bio: "Welcome to my profile!",
     profileScore: 0,
     postScores: [0], // adds an initial score to the array to prevent crash (look at changing)

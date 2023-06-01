@@ -122,7 +122,8 @@ function checkLoggedIn(request, response, nextAction) {
 //controller for the main app view, depends on user logged in state
 app.get("/new-post", checkLoggedIn, async (request, response) => {
   // uses checkLoggedIn function as validation before redirecting user to app
-  response.render("pages/new-post");
+  let user = await userData.findUser(request.session.username);
+  response.render("pages/new-post", { data: { user: user } });
 });
 
 //controller for the posts page view, depends on user logged in state

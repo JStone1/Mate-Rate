@@ -209,8 +209,11 @@ nav {
   #new-post-section form {
     align-items: start;
     gap: 0.6em; }
-    #new-post-section form div {
-      align-self: center; }
+    #new-post-section form img,
+    #new-post-section form div,
+    #new-post-section form h2 {
+      align-self: center;
+      margin: 0; }
 
 #add-image-button {
   width: 600px; }
