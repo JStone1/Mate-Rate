@@ -187,11 +187,13 @@ app.post("/updateScore", async (request, response) => {
   console.log("Score: ", score);
   let post = request.body.postNum; // postNum is a hidden input field in app.ejs form
   console.log("Post: ", post);
-  let user = await userData.findUser(request.session.username);
-  console.log("user.username:", user.username);
-  postData.ratePost(post, score, user._id);
+  let postAuthor = request.body.postAuthor;
+  console.log("Author: ", postAuthor);
+  let user = await userData.findUser(postAuthor);
+  console.log("user.username:", user.postScores);
+  postData.ratePost(post, score, request.session.userID);
   await userData.updatePostScores(user.username, score);
-  await userData.updateProfileScore(user.username, user.postScores);
+  await userData.updateProfileScore(postAuthor, user.postScores);
   response.status(204); // http code for "No content" - stops page from waiting for response
   response.send(console.log("Score updated"));
 });
