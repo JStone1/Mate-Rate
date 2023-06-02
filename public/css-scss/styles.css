@@ -210,7 +210,7 @@ nav {
       #login-section li {
         font-size: 1rem; }
       #login-section h2 {
-        font-size: 1.5rem; } }
+        font-size: 2rem; } }
 
 #register-section {
   display: flex;
@@ -239,7 +239,7 @@ nav {
       #register-section li {
         font-size: 1rem; }
       #register-section h2 {
-        font-size: 1.5rem; } }
+        font-size: 2rem; } }
 
 #info-options {
   display: flex;
@@ -306,9 +306,31 @@ nav {
     #new-post-section form h2 {
       align-self: center;
       margin: 0; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #new-post-section {
+      width: 300px; }
+      #new-post-section form {
+        width: 250px; } }
+
+.post-text {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 600px;
+  max-height: 40px;
+  padding: 15px;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  overflow: auto;
+  resize: none; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    .post-text {
+      width: 200px; } }
 
 #add-image-button {
   width: 600px; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #add-image-button {
+      width: 220px; } }
 
 #post-success-section {
   display: flex;
@@ -323,15 +345,33 @@ nav {
     font-family: "Lato", sans-serif;
     color: #ffffff;
     background-color: #fca311;
-    width: 300px;
-    height: 150px;
+    width: 250px;
+    height: 125px;
     padding: 50px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-decoration: none;
     transition: 0.5s; }
     #post-success-section button:hover {
       background-color: #ca820e;
       text-decoration: none; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #post-success-section {
+      flex-direction: column; }
+      #post-success-section button {
+        border-radius: 10px;
+        box-shadow: 0px 2px 0px #000000;
+        font-family: "Lato", sans-serif;
+        color: #ffffff;
+        background-color: #fca311;
+        width: 200px;
+        height: 100px;
+        padding: 15px;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: 0.5s; }
+        #post-success-section button:hover {
+          background-color: #ca820e;
+          text-decoration: none; } }
 
 #recent-posts {
   display: flex;
@@ -360,6 +400,12 @@ nav {
     margin: 0px; }
   .post form {
     margin: 0px 0px 15px 0px; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    .post {
+      width: 400px;
+      height: 550px; }
+      .post form {
+        width: 250px; } }
 
 .user-details {
   display: flex;
@@ -389,17 +435,11 @@ nav {
     max-width: 300px;
     max-height: 250px;
     border-radius: 10px; }
-
-.post-text {
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 600px;
-  max-height: 40px;
-  padding: 15px;
-  font-size: 1.2rem;
-  word-wrap: break-word;
-  overflow: auto;
-  resize: none; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #post-details img {
+      max-width: 200px;
+      max-height: 150px;
+      border-radius: 10px; } }
 
 #profile-container {
   display: flex;
@@ -424,14 +464,25 @@ nav {
   gap: 2em;
   margin-top: 30px; }
   #profile-heading h1 {
-    margin: 0; }
+    margin: 0;
+    font-size: 3rem; }
   #profile-heading img {
     width: 100px;
     height: 100px; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #profile-heading img {
+      width: 75px;
+      height: 75px; } }
 
 #profile-score {
-  font-size: 48px;
+  font-size: 2rem;
   margin: 50px 0px; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #profile-score {
+      margin: 30px 0px; }
+      #profile-score img {
+        width: 75px;
+        height: 75px; } }
 
 #score {
   color: #fca311; }
@@ -444,6 +495,9 @@ nav {
   width: 700px;
   padding: 10px;
   overflow: hidden; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #bio {
+      width: 330px; } }
 
 .profile-pic {
   width: 75px;
@@ -454,11 +508,18 @@ nav {
   display: flex;
   overflow-x: auto;
   gap: 4rem;
-  width: 1500px;
+  width: 700px;
   margin-bottom: 100px; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #profile-posts {
+      width: 330px;
+      height: 550px; }
+      #profile-posts img {
+        max-width: 200px;
+        max-height: 150px; } }
 
 #profile-posts-section {
-  font-size: 24px; }
+  font-size: 18px; }
 
 #settings-section {
   display: flex;
@@ -475,6 +536,10 @@ nav {
   width: 600px;
   height: 600px;
   margin-bottom: 100px; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #settings-section {
+      width: 315px;
+      height: 550px; } }
 
 .update-container {
   display: flex;
@@ -504,6 +569,13 @@ nav {
     .update-container button:hover {
       background-color: #ca820e;
       text-decoration: none; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    .update-container label {
+      width: 80px;
+      text-align: center; }
+    .update-container input {
+      width: 120px;
+      height: 30px; } }
 
 #profilepic-container {
   flex-direction: column; }

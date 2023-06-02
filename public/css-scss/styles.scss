@@ -181,7 +181,7 @@ nav {
       font-size: 1rem;
     }
     h2 {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 }
@@ -201,7 +201,7 @@ nav {
       font-size: 1rem;
     }
     h2 {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 }
@@ -266,10 +266,34 @@ nav {
       margin: 0;
     }
   }
+  @include breakpoint(0px, 750px) {
+    width: 300px;
+    form {
+      width: 250px;
+    }
+  }
+}
+
+.post-text {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 600px;
+  max-height: 40px;
+  padding: 15px;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  overflow: auto;
+  resize: none;
+  @include breakpoint(0px, 750px) {
+    width: 200px;
+  }
 }
 
 #add-image-button {
   width: 600px;
+  @include breakpoint(0px, 750px) {
+    width: 220px;
+  }
 }
 
 // post success
@@ -278,9 +302,15 @@ nav {
   @include centerContent(row);
   gap: 5em;
   button {
-    @include buttonStyle(300px, 150px, 50px, 2rem);
+    @include buttonStyle(250px, 125px, 50px, 1.5rem);
   }
   margin-top: 50px;
+  @include breakpoint(0px, 750px) {
+    flex-direction: column;
+    button {
+      @include buttonStyle(200px, 100px, 15px, 1rem);
+    }
+  }
 }
 
 // view posts
@@ -302,6 +332,13 @@ nav {
   }
   form {
     margin: 0px 0px 15px 0px;
+  }
+  @include breakpoint(0px, 750px) {
+    width: 400px;
+    height: 550px;
+    form {
+      width: 250px;
+    }
   }
 }
 
@@ -331,18 +368,13 @@ nav {
     max-height: 250px;
     border-radius: 10px;
   }
-}
-
-.post-text {
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 600px;
-  max-height: 40px;
-  padding: 15px;
-  font-size: 1.2rem;
-  word-wrap: break-word;
-  overflow: auto;
-  resize: none;
+  @include breakpoint(0px, 750px) {
+    img {
+      max-width: 200px;
+      max-height: 150px;
+      border-radius: 10px;
+    }
+  }
 }
 
 // profile
@@ -365,16 +397,30 @@ nav {
   margin-top: 30px;
   h1 {
     margin: 0;
+    font-size: 3rem;
   }
   img {
     width: 100px;
     height: 100px;
   }
+  @include breakpoint(0px, 750px) {
+    img {
+      width: 75px;
+      height: 75px;
+    }
+  }
 }
 
 #profile-score {
-  font-size: 48px;
+  font-size: 2rem;
   margin: 50px 0px;
+  @include breakpoint(0px, 750px) {
+    margin: 30px 0px;
+    img {
+      width: 75px;
+      height: 75px;
+    }
+  }
 }
 
 #score {
@@ -389,6 +435,9 @@ nav {
   width: 700px;
   padding: 10px;
   overflow: hidden;
+  @include breakpoint(0px, 750px) {
+    width: 330px;
+  }
 }
 
 .profile-pic {
@@ -401,12 +450,20 @@ nav {
   display: flex;
   overflow-x: auto;
   gap: 4rem;
-  width: 1500px;
+  width: 700px;
   margin-bottom: 100px;
+  @include breakpoint(0px, 750px) {
+    width: 330px;
+    height: 550px;
+    img {
+      max-width: 200px;
+      max-height: 150px;
+    }
+  }
 }
 
 #profile-posts-section {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 // settings
@@ -417,6 +474,10 @@ nav {
   gap: 3em;
   @include containerStyle(600px, 600px);
   margin-bottom: 100px;
+  @include breakpoint(0px, 750px) {
+    width: 315px;
+    height: 550px;
+  }
 }
 
 .update-container {
@@ -433,6 +494,16 @@ nav {
   }
   button {
     @include buttonStyle(80px, 35px, 0px, 0.9rem);
+  }
+  @include breakpoint(0px, 750px) {
+    label {
+      width: 80px;
+      text-align: center;
+    }
+    input {
+      width: 120px;
+      height: 30px;
+    }
   }
 }
 
