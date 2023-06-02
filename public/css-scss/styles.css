@@ -71,24 +71,42 @@ header {
   background-color: #14213d;
   color: white;
   width: 100%;
-  padding: 30px 0px;
+  padding: 25px 0px;
   position: sticky;
   top: 0;
   z-index: 10; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    header {
+      padding: 18px 0px; } }
 
 nav {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: flex-end; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    nav {
+      justify-content: center; } }
+
+#small-nav {
+  display: flex;
+  flex-direction: row; }
+  #small-nav li {
+    margin: 0px 2px; }
 
 #left-nav {
   flex: 1;
   justify-content: flex-start; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #left-nav {
+      display: none; } }
 
 #right-nav {
   flex: 1;
   justify-content: flex-end; }
+  @media screen and (min-width: 0px) and (max-width: 750px) {
+    #right-nav {
+      display: none; } }
 
 #logged-out-nav {
   justify-content: center; }
@@ -106,8 +124,10 @@ nav {
   .icon:hover {
     color: #fca311; }
 
-#logout-button svg:hover {
-  color: #fca311; }
+#logout-button {
+  margin: 0; }
+  #logout-button svg:hover {
+    color: #fca311; }
 
 .page-nav {
   display: flex;
@@ -132,7 +152,7 @@ nav {
 
 @media screen and (min-width: 0px) and (max-width: 1000px) {
   #landing-page-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 1em; } }
 
 .main-page-container {
@@ -593,7 +613,7 @@ nav {
   color: #14213d; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 #delete-profile-btn {
   border-radius: 10px;

@@ -53,10 +53,13 @@ header {
   background-color: $primary-colour;
   color: white;
   width: 100%;
-  padding: 30px 0px;
+  padding: 25px 0px;
   position: sticky;
   top: 0;
   z-index: 10;
+  @include breakpoint(0px, 750px) {
+    padding: 18px 0px;
+  }
 }
 
 nav {
@@ -64,15 +67,32 @@ nav {
   flex: 1;
   align-items: center;
   justify-content: flex-end;
+  @include breakpoint(0px, 750px) {
+    justify-content: center;
+  }
+}
+
+#small-nav {
+  display: flex;
+  flex-direction: row;
+  li {
+    margin: 0px 2px;
+  }
 }
 
 #left-nav {
   flex: 1;
   justify-content: flex-start;
+  @include breakpoint(0px, 750px) {
+    display: none;
+  }
 }
 #right-nav {
   flex: 1;
   justify-content: flex-end;
+  @include breakpoint(0px, 750px) {
+    display: none;
+  }
 }
 
 #logged-out-nav {
@@ -96,6 +116,7 @@ nav {
 }
 
 #logout-button {
+  margin: 0;
   svg {
     &:hover {
       color: $secondary-colour;
@@ -120,7 +141,7 @@ nav {
 
 #landing-page-container {
   @include breakpoint(0px, 1000px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 1em;
   }
 }
@@ -526,7 +547,7 @@ nav {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #delete-profile-btn {

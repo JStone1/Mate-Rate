@@ -23,3 +23,20 @@ export function clearInput() {
   postText.value = "";
   currentText = "";
 }
+
+// code for responsive navbar
+let smallNav = document.getElementById("small-nav");
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 750) smallNav.classList.remove("hidden");
+  else {
+    smallNav.classList.add("hidden");
+  }
+});
+
+window.addEventListener("load", () => {
+  if (window.innerWidth < 750) smallNav.classList.remove("hidden");
+  else {
+    smallNav.classList.add("hidden");
+  }
+});
